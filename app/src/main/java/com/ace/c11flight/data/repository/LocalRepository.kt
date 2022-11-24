@@ -2,12 +2,31 @@ package com.ace.c11flight.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
+import com.ace.c11flight.data.local.user.AccountDataSource
+import com.ace.c11flight.data.local.user.AccountEntity
 import com.ace.c11flight.data.model.AccountDataStoreManager
 import com.ace.c11flight.data.model.Prefs
+import javax.inject.Inject
 
-class LocalRepository (
+class LocalRepository @Inject constructor (
+    private val accountDataSource: AccountDataSource,
     private val prefs: AccountDataStoreManager,
 ) {
+    suspend fun getAccountById(id: Long): AccountEntity? {
+        return accountDataSource.getAccountById(id)
+    }
+
+    suspend fun createAccount(account: AccountEntity): Long {
+        return accountDataSource.registerAccount(account)
+    }
+
+    suspend fun updateAccount(account: AccountEntity): Int {
+        return accountDataSource.updateAccount(account)
+    }
+
+    suspend fun getAccount(username: String): AccountEntity {
+        return accountDataSource.getUser(username)
+    }
 
     suspend fun setAccount(username: String, email: String, password:String, accountId: Long) {
         prefs.setAccount(username, email, password, accountId)

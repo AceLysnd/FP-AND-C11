@@ -3,6 +3,7 @@ package com.ace.c11flight.utils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import com.ace.c11flight.ui.viewmodel.LoginActivityViewModel
 import kotlin.reflect.KProperty
 
 class LazyViewModelDelegate<T: ViewModel>(

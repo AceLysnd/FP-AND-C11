@@ -4,16 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.ace.c11flight.databinding.ActivityLoginBinding
 import com.ace.c11flight.databinding.ActivityRegisterBinding
 import com.ace.c11flight.ui.viewmodel.LoginActivityViewModel
+import com.ace.c11flight.utils.viewModelFactory
 
 class LoginActivity : AppCompatActivity() {
 
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: LoginActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Takeoff</string>
+    <string name="app_name">TakeOff</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="movie_title">Movie Title</string>
     <string name="movie_release_date">release date</string>

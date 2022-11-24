@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -71,4 +72,8 @@ dependencies {
 
     //viewmodel ktx
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+
+    def hilt_version= "2.42"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 }

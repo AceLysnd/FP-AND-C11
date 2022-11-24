@@ -1,9 +1,9 @@
-package com.ace.whatmovie.di
+package com.ace.c11flight.di
 
 import android.content.Context
 import androidx.room.Room
-import com.ace.whatmovie.data.local.AppDatabase
-import com.ace.whatmovie.data.local.user.AccountDao
+import com.ace.c11flight.data.local.AppDatabase
+import com.ace.c11flight.data.local.user.AccountDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

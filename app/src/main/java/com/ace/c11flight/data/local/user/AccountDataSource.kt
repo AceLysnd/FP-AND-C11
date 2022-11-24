@@ -1,6 +1,8 @@
 package com.ace.c11flight.data.local.user
 
-class AccountDataSource (private val accountDao: AccountDao) {
+import javax.inject.Inject
+
+class AccountDataSource @Inject constructor(private val accountDao: AccountDao) {
 
     suspend fun getAccountById(id: Long): AccountEntity? {
         return accountDao.getAccountById(id)

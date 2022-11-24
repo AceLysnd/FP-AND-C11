@@ -1,4 +1,6 @@
 package com.ace.c11flight.ui.viewmodel
 
-class LoginActivityViewModel {
+import androidx.lifecycle.ViewModel
+
+class LoginActivityViewModel : ViewModel() {
 }
