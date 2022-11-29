@@ -11,15 +11,15 @@
     <string name="tv_rating">Rating :</string>
     <string name="rating">Rating</string>
     <string name="tv_login">Login</string>
-    <string name="enter_username">Enter Username</string>
-    <string name="enter_password">Enter Password</string>
+    <string name="enter_username">Name</string>
+    <string name="enter_password">Password</string>
     <string name="btn_login">Login</string>
     <string name="no_account">Don\'t Have an Account?</string>
     <string name="register">Register</string>
-    <string name="tv_create_new_account">Create New Account</string>
+    <string name="tv_create_new_account">Welcome!</string>
     <string name="enter_email">Enter Email</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="btn_create_account">Create Account</string>
+    <string name="confirm_password">Repeat Password</string>
+    <string name="btn_create_account">Register</string>
     <string name="have_account">Already Have an Account?</string>
     <string name="login">Login</string>
     <string name="upcoming_movies_txt">Upcoming Movies</string>
@@ -43,4 +43,11 @@
     <string name="account_created">Account Created!</string>
     <string name="tv_edit_account">Edit Account Info</string>
     <string name="change_profile_picture">change profile picture</string>
+    <string name="let_s_help_you_meet_up_your_destination">let\'s help you meet up your destination</string>
+    <string name="do_you_want_to_exit_app">Do you want to exit app?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="masukkan_email">Masukkan Email</string>
+    <string name="submit">Submit</string>
 </resources>
