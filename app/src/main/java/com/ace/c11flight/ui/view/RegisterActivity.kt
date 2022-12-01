@@ -56,22 +56,21 @@ class RegisterActivity : AppCompatActivity() {
                 password = binding.etPassword.text.toString()
             )
             val userInfo = UserInfo(
+                status = null,
                 id = null,
                 username = binding.etUsername.text.toString(),
                 email = binding.etEmail.text.toString(),
                 password = binding.etPassword.text.toString()
             )
             apiService.registerUser(userInfo) {
-                if (it?.id != null) {
-                    // it = newly added user parsed as response
-                    // it?.id = newly added user ID
+                if (it?.status == "OK") {
+                    viewModel.registerUser(user)
+                    goToLogin()
+                    Toast.makeText(this, getString(R.string.account_created), Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "error regist user", Toast.LENGTH_SHORT).show()
                 }
             }
-            viewModel.registerUser(user)
-            goToLogin()
-            Toast.makeText(this, getString(R.string.account_created), Toast.LENGTH_SHORT).show()
         }
     }
 
