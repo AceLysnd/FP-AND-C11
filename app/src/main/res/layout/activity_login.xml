@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
     tools:context=".ui.view.LoginActivity">
 
     <ImageView
@@ -66,7 +65,7 @@
                 android:inputType="text"
                 android:drawablePadding="16dp"
                 android:padding="18dp"
-                android:hint="Username"
+                android:hint="Email"
                 android:textColor="@color/black"
                 android:textColorHint="#ADADAD"
                 app:layout_constraintEnd_toEndOf="@+id/text_1"

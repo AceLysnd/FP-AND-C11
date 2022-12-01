@@ -10,7 +10,10 @@ import com.ace.c11flight.R
 import com.ace.c11flight.data.local.user.AccountDao
 import com.ace.c11flight.data.local.user.AccountDataSource
 import com.ace.c11flight.data.local.user.AccountEntity
+import com.ace.c11flight.data.model.UserInfo
 import com.ace.c11flight.data.repository.LocalRepository
+import com.ace.c11flight.data.services.AccountApiService
+import com.ace.c11flight.data.services.ApiHelper
 import com.ace.c11flight.databinding.ActivityRegisterBinding
 import com.ace.c11flight.ui.viewmodel.RegisterActivityViewModel
 import com.ace.c11flight.utils.viewModelFactory
@@ -45,12 +48,27 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun createAccount() {
+        val apiService = ApiHelper()
         if (validateInput()) {
             val user = AccountEntity(
                 username = binding.etUsername.text.toString(),
                 email = binding.etEmail.text.toString(),
                 password = binding.etPassword.text.toString()
             )
+            val userInfo = UserInfo(
+                id = null,
+                username = binding.etUsername.text.toString(),
+                email = binding.etEmail.text.toString(),
+                password = binding.etPassword.text.toString()
+            )
+            apiService.registerUser(userInfo) {
+                if (it?.id != null) {
+                    // it = newly added user parsed as response
+                    // it?.id = newly added user ID
+                } else {
+                    Toast.makeText(this, "error regist user", Toast.LENGTH_SHORT).show()
+                }
+            }
             viewModel.registerUser(user)
             goToLogin()
             Toast.makeText(this, getString(R.string.account_created), Toast.LENGTH_SHORT).show()

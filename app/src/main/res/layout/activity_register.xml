@@ -24,17 +24,6 @@
             android:layout_gravity="center"
             tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Catchphrase"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_dialog"
-            android:layout_marginTop="20dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"
-            android:textColor="@color/black"
-            android:layout_gravity="center"/>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

@@ -7,6 +7,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.ace.c11flight.R
 import com.ace.c11flight.data.local.user.AccountEntity
+import com.ace.c11flight.data.model.LoginInfo
+import com.ace.c11flight.data.services.ApiHelper
 import com.ace.c11flight.databinding.ActivityLoginBinding
 import com.ace.c11flight.ui.viewmodel.LoginActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,12 +40,40 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkLogin() {
+        val apiService = ApiHelper()
         if (validateInput()) {
+
+            val loginInfo = LoginInfo(
+                status = null,
+                id = null,
+                username = null,
+                email = binding.etUsername.text.toString(),
+                password = binding.etPassword.text.toString()
+            )
+
+            apiService.loginUser(loginInfo) {
+                if (it?.status == "OK") {
+                    Toast.makeText(this, "login OK", Toast.LENGTH_SHORT).show()
+                    it.id?.let { it1 ->
+                        saveLoginInfo(
+                            it.username.toString(),
+                            it.email.toString(),
+                            it.password.toString(),
+                            it1,
+                            loginStatus = true
+                        )
+                    }
+                    goToHome()
+                } else {
+                    Toast.makeText(this, "Email or password is not identified", Toast.LENGTH_SHORT).show()
+                }
+            }
+
             val username = binding.etUsername.text.toString()
             viewModel.getUser(username)
 
             viewModel.getUser.observe(this) {
-                checkAccount(it)
+//                checkAccount(it)
             }
         }
     }
@@ -69,23 +99,23 @@ class LoginActivity : AppCompatActivity() {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
 
-            val loginStatus = username == account.username && password == account.password
-            if (loginStatus) {
-//                goToHome()
-            } else {
-                Toast.makeText(
-                    this,
-                    getString(R.string.username_or_password_incorrect),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            saveLoginInfo(
-                account.username,
-                account.email,
-                account.password,
-                account.accountId,
-                loginStatus
-            )
+//            val loginStatus = username == account.username && password == account.password
+//            if (loginStatus) {
+////                goToHome()
+//            } else {
+//                Toast.makeText(
+//                    this,
+//                    getString(R.string.username_or_password_incorrect),
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//            saveLoginInfo(
+//                account.username,
+//                account.email,
+//                account.password,
+//                account.accountId,
+//                loginStatus
+//            )
         }
     }
 
