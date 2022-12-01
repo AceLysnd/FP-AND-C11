@@ -26,12 +26,11 @@ class LoginActivity : AppCompatActivity() {
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        isLoginInfoValid()
         setOnClickListeners()
     }
 
     private fun setOnClickListeners() {
-        binding.btnLogin.setOnClickListener{ checkLogin() }
+        binding.btnLogin.setOnClickListener { checkLogin() }
         binding.tvGotoRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
@@ -44,9 +43,9 @@ class LoginActivity : AppCompatActivity() {
         if (validateInput()) {
 
             val loginInfo = LoginInfo(
-                status = null,
+                status = "",
                 id = null,
-                username = null,
+                username = "",
                 email = binding.etUsername.text.toString(),
                 password = binding.etPassword.text.toString()
             )
@@ -54,26 +53,17 @@ class LoginActivity : AppCompatActivity() {
             apiService.loginUser(loginInfo) {
                 if (it?.status == "OK") {
                     Toast.makeText(this, "login OK", Toast.LENGTH_SHORT).show()
-                    it.id?.let { it1 ->
-                        saveLoginInfo(
-                            it.username.toString(),
-                            it.email.toString(),
-                            it.password.toString(),
-                            it1,
-                            loginStatus = true
-                        )
-                    }
+                    saveLoginInfo(
+                        it.username.toString(),
+                        it.email.toString(),
+                        it.password.toString(),
+                        loginStatus = true
+                    )
                     goToHome()
                 } else {
-                    Toast.makeText(this, "Email or password is not identified", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Email or password is not identified", Toast.LENGTH_SHORT)
+                        .show()
                 }
-            }
-
-            val username = binding.etUsername.text.toString()
-            viewModel.getUser(username)
-
-            viewModel.getUser.observe(this) {
-//                checkAccount(it)
             }
         }
     }
@@ -94,55 +84,31 @@ class LoginActivity : AppCompatActivity() {
         return isValid
     }
 
-    fun checkAccount(account: AccountEntity?) {
-        account?.let {
-            val username = binding.etUsername.text.toString()
-            val password = binding.etPassword.text.toString()
-
-//            val loginStatus = username == account.username && password == account.password
-//            if (loginStatus) {
-////                goToHome()
-//            } else {
-//                Toast.makeText(
-//                    this,
-//                    getString(R.string.username_or_password_incorrect),
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//            saveLoginInfo(
-//                account.username,
-//                account.email,
-//                account.password,
-//                account.accountId,
-//                loginStatus
-//            )
-        }
-    }
-
     fun saveLoginInfo(
         username: String,
         email: String,
         password: String,
-        accountId: Long,
         loginStatus: Boolean
     ) {
-        viewModel.setAccount(username, email, password, accountId)
+        viewModel.setAccount(username, email, password)
         viewModel.saveLoginStatus(loginStatus)
-    }
-
-    private fun isLoginInfoValid() {
-        viewModel.getLoginStatus().observe(this) {
-            if (it) {
-                goToHome()
-                Toast.makeText(this, "Login Verified", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     private fun goToHome() {
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    private var backButtonCount = 0
+    override fun onBackPressed() {
+        if (backButtonCount < 1) {
+            Toast.makeText(this, getString(R.string.press_back_again), Toast.LENGTH_SHORT).show()
+            backButtonCount += 1
+        } else {
+            moveTaskToBack(true)
+            backButtonCount = 0
+        }
     }
 
 }

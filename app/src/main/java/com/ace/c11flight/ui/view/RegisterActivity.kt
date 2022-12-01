@@ -5,18 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.findNavController
 import com.ace.c11flight.R
-import com.ace.c11flight.data.local.user.AccountDao
-import com.ace.c11flight.data.local.user.AccountDataSource
 import com.ace.c11flight.data.local.user.AccountEntity
 import com.ace.c11flight.data.model.UserInfo
-import com.ace.c11flight.data.repository.LocalRepository
-import com.ace.c11flight.data.services.AccountApiService
 import com.ace.c11flight.data.services.ApiHelper
 import com.ace.c11flight.databinding.ActivityRegisterBinding
 import com.ace.c11flight.ui.viewmodel.RegisterActivityViewModel
-import com.ace.c11flight.utils.viewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

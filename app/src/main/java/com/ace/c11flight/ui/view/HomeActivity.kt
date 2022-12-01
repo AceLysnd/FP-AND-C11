@@ -3,6 +3,8 @@ package com.ace.c11flight.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -27,15 +29,45 @@ class HomeActivity : AppCompatActivity() {
 
         isLoginInfoValid()
         setOnClickListeners()
+        setUsername()
+    }
+
+    private fun setUsername() {
+        viewModel.getAccountPrefs().observe(this){
+            binding.tvUsername.text = it.username
+        }
     }
 
     private fun isLoginInfoValid() {
         viewModel.getLoginStatus().observe(this) {
             if (it) {
+                binding.hi.visibility = View.VISIBLE
+                binding.tvUsername.visibility = View.VISIBLE
                 binding.messageLogin.visibility = View.GONE
                 Toast.makeText(this, "Login Verified", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_home, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.profile -> {
+                goToProfile()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun goToProfile() {
+        val i = Intent(this, ProfileActivity::class.java)
+        startActivity(i)
     }
 
     private fun setOnClickListeners() {
