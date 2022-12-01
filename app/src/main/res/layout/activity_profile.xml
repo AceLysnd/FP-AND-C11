@@ -11,7 +11,7 @@
         android:id="@+id/img_profile"
         android:layout_width="126dp"
         android:layout_height="153dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ic_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -55,6 +55,7 @@
         android:layout_height="wrap_content"
         android:hint="No. Handphone"
         android:layout_marginTop="30dp"
+        android:textColor="@color/black"
         android:layout_marginRight="60dp"
         android:layout_marginLeft="60dp"
         android:background="@drawable/round_border"
@@ -79,14 +80,16 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_nohp_profile" />
 
     <Button
-        android:id="@+id/btn_perbarui_profile"
+        android:id="@+id/btn_edit_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="60dp"
-        android:text="Perbarui"
+        android:text="Edit profile"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/edt_alamat_profile"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edt_alamat_profile"
         app:layout_constraintTop_toBottomOf="@+id/edt_alamat_profile" />
 
@@ -95,12 +98,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Keluar"
+        android:textColor="@color/white"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_perbarui_profile"
-        app:layout_constraintStart_toStartOf="@+id/btn_perbarui_profile"
-        app:layout_constraintTop_toBottomOf="@+id/btn_perbarui_profile" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_edit_profile"
+        app:layout_constraintStart_toStartOf="@+id/btn_edit_profile"
+        app:layout_constraintTop_toBottomOf="@+id/btn_edit_profile" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
