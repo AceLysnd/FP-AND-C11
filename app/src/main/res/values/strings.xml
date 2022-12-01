@@ -50,4 +50,14 @@
     <string name="reset_password">Reset Password</string>
     <string name="masukkan_email">Masukkan Email</string>
     <string name="submit">Submit</string>
+    <string name="hi_text">Hi ,</string>
+    <string name="user">User</string>
+    <string name="from_buyer">From</string>
+    <string name="take_off">Take Off</string>
+    <string name="sub">SUB</string>
+    <string name="surabaya">Surabaya</string>
+    <string name="aan">AAN</string>
+    <string name="yogyakarta">Yogyakarta</string>
+    <string name="to">To</string>
+    <string name="book_now">Book Now</string>
 </resources>
