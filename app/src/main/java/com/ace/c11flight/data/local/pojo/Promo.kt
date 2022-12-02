@@ -1,3 +1,5 @@
 package com.ace.c11flight.data.local.pojo
 
-data class Promo()
+data class Promo(
+    val image:Int
+)
