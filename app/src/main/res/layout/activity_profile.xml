@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_alamat_profile" />
 
     <Button
-        android:id="@+id/edt_editprofile"
+        android:id="@+id/btnLogOut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Keluar"
