@@ -20,14 +20,7 @@
             android:layout_margin="10dp"
             android:visibility="visible"
             app:cardBackgroundColor="@color/white"
-            tools:ignore="MissingConstraints" />
-
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bottomNavigationView"
-        app:layout_constraintTop_toTopOf="parent">
-
-
+            tools:ignore="MissingConstraints">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

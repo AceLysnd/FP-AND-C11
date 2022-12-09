@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "943537790965",
+    "project_id": "c11-flight",
+    "storage_bucket": "c11-flight.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943537790965:android:0f9469d860fe1ef7df8abc",
+        "android_client_info": {
+          "package_name": "com.ace.c11flight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943537790965-9a2k1lrj9j68sln4gmr4vi4cjdilg30t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP7kzaufmbMWnML6COzPcDzRTQgFWgnGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943537790965-9a2k1lrj9j68sln4gmr4vi4cjdilg30t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
