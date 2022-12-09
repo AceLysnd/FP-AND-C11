@@ -8,7 +8,7 @@
       tools:ignore="HardcodedText,MenuTitle" />
   <item
       android:title="Booking"
-      android:id="@+id/Booking"
+      android:id="@+id/booking"
       android:icon="@drawable/booking"
       tools:ignore="HardcodedText,MenuTitle" />
   <item
