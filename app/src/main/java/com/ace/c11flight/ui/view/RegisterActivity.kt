@@ -12,6 +12,7 @@ import com.ace.c11flight.data.services.ApiHelper
 import com.ace.c11flight.databinding.ActivityRegisterBinding
 import com.ace.c11flight.ui.viewmodel.RegisterActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import com.ace.c11flight.data.model.Account as Account
 
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
@@ -51,10 +52,6 @@ class RegisterActivity : AppCompatActivity() {
             )
             val userInfo = UserInfo(
                 status = null,
-                id = null,
-                username = binding.etUsername.text.toString(),
-                email = binding.etEmail.text.toString(),
-                password = binding.etPassword.text.toString()
             )
             apiService.registerUser(userInfo) {
                 if (it?.status == "OK") {

@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
 import com.ace.c11flight.R
 import com.ace.c11flight.databinding.ActivityHomeBinding
 import com.ace.c11flight.databinding.ActivityRegisterBinding
@@ -27,22 +28,35 @@ class HomeActivity : AppCompatActivity() {
         _binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        setBottomNav()
         isLoginInfoValid()
         setOnClickListeners()
-        setUsername()
     }
 
-    private fun setUsername() {
-        viewModel.getAccountPrefs().observe(this){
-            binding.tvUsername.text = it.username
+    private fun setBottomNav() {
+        val homeFragment = HomeFragment()
+        setCurrentFragment(homeFragment)
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.home -> setCurrentFragment(homeFragment)
+//                R.id.booking -> setCurrentFragment()
+//                R.id.more -> setCurrentFragment()
+
+            }
+            true
         }
+    }
+
+    private fun setCurrentFragment(fragment: Fragment)=
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,fragment)
+            commit()
     }
 
     private fun isLoginInfoValid() {
         viewModel.getLoginStatus().observe(this) {
             if (it) {
-                binding.hi.visibility = View.VISIBLE
-                binding.tvUsername.visibility = View.VISIBLE
                 binding.messageLogin.visibility = View.GONE
                 Toast.makeText(this, "Login Verified", Toast.LENGTH_SHORT).show()
             }
