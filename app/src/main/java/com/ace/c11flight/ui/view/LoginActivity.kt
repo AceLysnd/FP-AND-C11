@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.ace.c11flight.R
-import com.ace.c11flight.data.local.user.AccountEntity
+import com.ace.c11flight.data.model.Account
 import com.ace.c11flight.data.model.LoginInfo
 import com.ace.c11flight.data.services.ApiHelper
 import com.ace.c11flight.databinding.ActivityLoginBinding
@@ -45,20 +45,22 @@ class LoginActivity : AppCompatActivity() {
             val loginInfo = LoginInfo(
                 status = "",
                 id = null,
+//                data = null,
                 username = "",
                 email = binding.etUsername.text.toString(),
-                password = binding.etPassword.text.toString()
+                password = binding.etPassword.text.toString(),
             )
 
             apiService.loginUser(loginInfo) {
                 if (it?.status == "OK") {
                     Toast.makeText(this, "login OK", Toast.LENGTH_SHORT).show()
-                    saveLoginInfo(
-                        it.username.toString(),
-                        it.email.toString(),
-                        it.password.toString(),
+                    saveLoginStatus(
                         loginStatus = true
                     )
+//                    saveLoginInfo(
+//                        ,
+//                        loginStatus = true
+//                    )
                     goToHome()
                 } else {
                     Toast.makeText(this, "Email or password is not identified", Toast.LENGTH_SHORT)
@@ -91,6 +93,12 @@ class LoginActivity : AppCompatActivity() {
         loginStatus: Boolean
     ) {
         viewModel.setAccount(username, email, password)
+        viewModel.saveLoginStatus(loginStatus)
+    }
+
+    fun saveLoginStatus(
+        loginStatus: Boolean
+    ) {
         viewModel.saveLoginStatus(loginStatus)
     }
 

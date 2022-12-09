@@ -19,10 +19,7 @@ class BookingActivity : AppCompatActivity() {
     }
 
     private fun setOnclick() {
-        binding.btnGobooking.setOnClickListener {
-            val change = Intent(this@BookingActivity,MenuBooking::class.java)
-            startActivity(change)
-        }
+
     }
 
 
