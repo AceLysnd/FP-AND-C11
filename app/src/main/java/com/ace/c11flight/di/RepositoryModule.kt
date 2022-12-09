@@ -15,7 +15,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @InstallIn(ViewModelComponent::class)
 object RepositoryModule {
 
-//    @ViewModelScoped
+//    @ViewMo   delScoped
 //    @Provides
 //    fun provideRepository(apiHelper: ApiHelper) = MoviesRepository(apiHelper)
 

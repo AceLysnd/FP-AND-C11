@@ -59,7 +59,7 @@ class RegisterActivity : AppCompatActivity() {
                     goToLogin()
                     Toast.makeText(this, getString(R.string.account_created), Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "error regist user", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "error register user", Toast.LENGTH_SHORT).show()
                 }
             }
         }

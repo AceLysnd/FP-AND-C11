@@ -99,7 +99,7 @@
                 android:layout_marginRight="90dp"
                 android:layout_marginLeft="90dp"
                 android:text="Login"
-                android:backgroundTint="#84B9E0"
+                android:background="@drawable/rounded"
                 android:padding="13dp"
                 app:layout_constraintEnd_toEndOf="@+id/et_password"
                 app:layout_constraintStart_toStartOf="@+id/et_password"

@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.ace.c11flight.R
-import com.ace.c11flight.databinding.ActivityHomeBinding
 import com.ace.c11flight.databinding.ActivityProfileBinding
-import com.ace.c11flight.ui.viewmodel.HomeActivityViewModel
 import com.ace.c11flight.ui.viewmodel.ProfileActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
