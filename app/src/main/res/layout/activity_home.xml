@@ -18,7 +18,8 @@
             app:cardCornerRadius="10dp"
             android:layout_margin="10dp"
             app:cardBackgroundColor="@color/white"
-            android:visibility="visible">
+            android:visibility="visible"
+            tools:ignore="MissingConstraints">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

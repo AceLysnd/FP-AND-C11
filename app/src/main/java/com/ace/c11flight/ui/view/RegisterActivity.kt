@@ -29,6 +29,8 @@ class RegisterActivity : AppCompatActivity() {
         setOnClickListeners()
     }
 
+
+
     private fun setOnClickListeners() {
         binding.tvGotoLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

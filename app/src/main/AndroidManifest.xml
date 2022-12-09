@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ace.c11flight">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -16,6 +16,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.C11Flight"
         tools:targetApi="31">
+        <activity
+            android:name=".MenuBooking"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.view.BookingActivity"
+            android:exported="true"
+            android:label="@string/title_activity_booking"
+            android:theme="@style/Theme.C11Flight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ui.view.EditProfileActivity"
             android:exported="false" />
@@ -31,13 +53,7 @@
         </activity>
         <activity
             android:name=".ui.view.HomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.view.LoginActivity"
             android:exported="false" />

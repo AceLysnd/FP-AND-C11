@@ -158,5 +158,6 @@
                 app:layout_constraintStart_toEndOf="@+id/tv_register_dialog"
                 app:layout_constraintTop_toBottomOf="@+id/btn_create_account" />
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
