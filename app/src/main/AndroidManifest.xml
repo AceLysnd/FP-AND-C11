@@ -16,19 +16,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.C11Flight"
         tools:targetApi="31">
-
+        <activity
+            android:name=".AirPortList"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ui.view.BookingActivity"
             android:exported="true"
             android:label="@string/title_activity_booking"
             android:theme="@style/Theme.C11Flight.NoActionBar">
-<<<<<<< HEAD
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-=======
->>>>>>> d2ac11f44341462c19bfd02d1ca7aa9fb0e5a66f
         </activity>
         <activity
             android:name=".ui.view.EditProfileActivity"
@@ -51,13 +53,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-<<<<<<< HEAD
 
-=======
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
->>>>>>> d2ac11f44341462c19bfd02d1ca7aa9fb0e5a66f
         </activity>
         <activity
             android:name=".ui.view.LoginActivity"
