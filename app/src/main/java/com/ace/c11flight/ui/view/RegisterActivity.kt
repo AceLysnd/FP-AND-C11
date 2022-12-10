@@ -54,6 +54,10 @@ class RegisterActivity : AppCompatActivity() {
             )
             val userInfo = UserInfo(
                 status = null,
+                id = null,
+                username = binding.etUsername.text.toString(),
+                email = binding.etEmail.text.toString(),
+                password = binding.etPassword.text.toString()
             )
             apiService.registerUser(userInfo) {
                 if (it?.status == "OK") {

@@ -36,16 +36,22 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setBottomNav() {
         val homeFragment = HomeFragment()
+        val moreFragment = MoreFragment()
         setCurrentFragment(homeFragment)
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> setCurrentFragment(homeFragment)
-//                R.id.booking -> setCurrentFragment()
-//                R.id.more -> setCurrentFragment()
+                R.id.booking -> goToBooking()
+                R.id.more -> setCurrentFragment(moreFragment)
 
             }
             true
         }
+    }
+
+    private fun goToBooking() {
+        val change = Intent(this@HomeActivity,BookingActivity::class.java)
+        startActivity(change)
     }
 
     private fun setCurrentFragment(fragment: Fragment)=
