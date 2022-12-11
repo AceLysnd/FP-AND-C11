@@ -21,9 +21,17 @@ class ProfileActivity : AppCompatActivity() {
         _binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUserInfo()
         setOnclickListeners()
     }
 
+    private fun setUserInfo() {
+        viewModel.getAccountPrefs().observe(this){
+            binding.tvUsername.text = it.username
+            binding.tvEmail.text = it.email
+            binding.tvPhone.text = it.accountId.toString()
+        }
+    }
 
 
     private fun setOnclickListeners() {

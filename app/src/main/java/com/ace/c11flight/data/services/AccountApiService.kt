@@ -4,9 +4,7 @@ import android.service.autofill.UserData
 import com.ace.c11flight.data.model.LoginInfo
 import com.ace.c11flight.data.model.UserInfo
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface AccountApiService {
 
@@ -20,4 +18,9 @@ interface AccountApiService {
     fun loginUser(
         @Body loginData: LoginInfo
     ): Call<LoginInfo>
+
+    @GET("user/{id}")
+    fun getUserData(
+        @Path("id") id: Int,
+    ): LoginInfo
 }

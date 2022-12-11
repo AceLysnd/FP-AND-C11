@@ -13,11 +13,12 @@ import javax.inject.Inject
 
 class AccountDataStoreManager @Inject constructor(@ActivityContext private val context: Context) {
 
-    suspend fun setAccount(username: String, email: String, password: String) {
+    suspend fun setAccount(username: String, email: String, password: String, id: Long) {
         context.accountDataStore.edit { preferences ->
             preferences[ACCOUNT_USERNAME] = username
             preferences[ACCOUNT_EMAIL] = email
             preferences[ACCOUNT_PASSWORD] = password
+            preferences[ACCOUNT_ID] = id
         }
     }
     suspend fun setLoginStatus(loginStatus: Boolean) {
