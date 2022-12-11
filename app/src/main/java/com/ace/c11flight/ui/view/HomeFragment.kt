@@ -12,6 +12,9 @@ import com.ace.c11flight.databinding.FragmentHomeBinding
 import com.ace.c11flight.ui.viewmodel.HomeFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+const val FROM_DESTINATION = "extra_from_destination"
+const val TO_DESTINATION = "extra_to_destination"
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -39,7 +42,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
+        binding.btnBookNow.setOnClickListener{
+            activity?.let {
+                val intent = Intent(it, BookingActivity::class.java)
+                intent.putExtra(FROM_DESTINATION, binding.tvFrom.text)
+                intent.putExtra(TO_DESTINATION, binding.tvTo.text)
 
+                it.startActivity(intent)
+            }
+        }
     }
     private fun setUsername() {
         viewModel.getAccountPrefs().observe(viewLifecycleOwner){
