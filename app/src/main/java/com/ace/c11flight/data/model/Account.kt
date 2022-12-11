@@ -13,7 +13,7 @@ data class Account(
     @SerializedName("firstName")
     val firstName: Any?,
     @SerializedName("id")
-    val id: Int?,
+    val id: Long?,
     @SerializedName("imgPassport")
     val imgPassport: Any?,
     @SerializedName("imgResidentPermit")

@@ -15,6 +15,15 @@ class BookingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val extras = intent.extras
+
+//        if (extras != null) {
+//            getDetails(extras)
+//
+//        } else {
+//            finish()
+//        }
         setOnclick()
     }
 
