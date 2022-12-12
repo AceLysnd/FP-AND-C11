@@ -2,6 +2,7 @@ package com.ace.c11flight.di
 
 import com.ace.c11flight.data.services.AccountApiService
 import com.ace.c11flight.data.services.ApiHelper
+import com.ace.c11flight.data.services.TempApiHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,9 +47,9 @@ object NetworkModule {
         return retrofit.create()
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideApiHelper(apiService: AccountApiService): ApiHelper {
-//        return ApiHelper(apiService)
-//    }
+    @Singleton
+    @Provides
+    fun provideApiHelper(apiService: AccountApiService): TempApiHelper {
+        return TempApiHelper(apiService)
+    }
 }

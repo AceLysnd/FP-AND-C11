@@ -61,14 +61,12 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
+                style="@style/BigColoredHeadline"
                 android:id="@+id/kode_Penerbangan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="SUB"
-                android:textColor="#0A48FB"
-                android:textSize="25sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/from"
                 app:layout_constraintStart_toStartOf="@+id/from"
                 app:layout_constraintTop_toBottomOf="@+id/from"
@@ -214,14 +212,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/One_Way" />
 
             <TextView
+                style="@style/BigColoredHeadline"
                 android:id="@+id/tv_code_penerbangan_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="SUB"
-                android:textColor="#0A48FB"
-                android:textSize="25sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/tv_to"
                 app:layout_constraintTop_toBottomOf="@+id/tv_to"
                 tools:ignore="MissingConstraints" />

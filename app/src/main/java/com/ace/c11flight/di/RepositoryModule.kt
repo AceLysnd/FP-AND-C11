@@ -1,9 +1,12 @@
-package com.ace.whatmovie.di
+package com.ace.c11flight.di
 
 import android.content.Context
 import com.ace.c11flight.data.local.user.AccountDataSource
+import com.ace.c11flight.data.model.Account
 import com.ace.c11flight.data.model.AccountDataStoreManager
+import com.ace.c11flight.data.repository.AccountRepository
 import com.ace.c11flight.data.repository.LocalRepository
+import com.ace.c11flight.data.services.TempApiHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,9 +18,9 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @InstallIn(ViewModelComponent::class)
 object RepositoryModule {
 
-//    @ViewMo   delScoped
-//    @Provides
-//    fun provideRepository(apiHelper: ApiHelper) = MoviesRepository(apiHelper)
+    @ViewModelScoped
+    @Provides
+    fun provideRepository(apiHelper: TempApiHelper) = AccountRepository(apiHelper)
 
     @ViewModelScoped
     @Provides
