@@ -64,7 +64,6 @@ class HomeActivity : AppCompatActivity() {
         viewModel.getLoginStatus().observe(this) {
             if (it) {
                 binding.messageLogin.visibility = View.GONE
-                Toast.makeText(this, "Login Verified", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -96,6 +95,17 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+    }
+
+    private var backButtonCount = 0
+    override fun onBackPressed() {
+        if (backButtonCount < 1) {
+            Toast.makeText(this, getString(R.string.press_back_again), Toast.LENGTH_SHORT).show()
+            backButtonCount += 1
+        } else {
+            moveTaskToBack(true)
+            backButtonCount = 0
         }
     }
 
