@@ -189,7 +189,6 @@
                     android:id="@+id/btnBookNow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginTop="8dp"
                     android:text="@string/book_now"
                     android:textAllCaps="false"
