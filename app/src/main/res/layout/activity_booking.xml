@@ -30,18 +30,21 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/roundtrip"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/grayd9"
                 android:textAllCaps="false"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <Button
-                android:id="@+id/One_Way"
+                android:id="@+id/btn_oneway"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
-                android:text="One Way"
+                android:text="@string/one_way"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/grayd9"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -209,7 +212,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/One_Way" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_oneway" />
 
             <TextView
                 style="@style/BigColoredHeadline"
@@ -386,6 +389,7 @@
                 android:text="Economy"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
+                android:backgroundTint="@color/grayd9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
                 tools:ignore="MissingConstraints" />
@@ -397,6 +401,7 @@
                 android:text="Business"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
+                android:backgroundTint="@color/grayd9"
                 app:layout_constraintEnd_toStartOf="@+id/btn_Firstclass"
                 app:layout_constraintStart_toEndOf="@+id/btn_Economy"
                 app:layout_constraintTop_toTopOf="@+id/btn_Economy"
@@ -410,6 +415,7 @@
                 android:text="First Class"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
+                android:backgroundTint="@color/grayd9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/btn_Bussiness"
                 tools:ignore="MissingConstraints" />

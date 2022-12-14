@@ -1,6 +1,7 @@
 package com.ace.c11flight.ui.view
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -28,7 +29,29 @@ class BookingActivity : AppCompatActivity() {
     }
 
     private fun setOnclick() {
-
+        binding.btnOneway.setOnClickListener {
+            binding.btnOneway.setBackgroundColor(resources.getColor(R.color.main))
+            binding.btnRoundtrip.setBackgroundColor(resources.getColor(R.color.grayd9))
+        }
+        binding.btnRoundtrip.setOnClickListener {
+            binding.btnRoundtrip.setBackgroundColor(resources.getColor(R.color.main))
+            binding.btnOneway.setBackgroundColor(resources.getColor(R.color.grayd9))
+        }
+        binding.btnEconomy.setOnClickListener {
+            binding.btnEconomy.setBackgroundColor(resources.getColor(R.color.main))
+            binding.btnBussiness.setBackgroundColor(resources.getColor(R.color.grayd9))
+            binding.btnFirstclass.setBackgroundColor(resources.getColor(R.color.grayd9))
+        }
+        binding.btnBussiness.setOnClickListener {
+            binding.btnBussiness.setBackgroundColor(resources.getColor(R.color.main))
+            binding.btnEconomy.setBackgroundColor(resources.getColor(R.color.grayd9))
+            binding.btnFirstclass.setBackgroundColor(resources.getColor(R.color.grayd9))
+        }
+        binding.btnFirstclass.setOnClickListener {
+            binding.btnFirstclass.setBackgroundColor(resources.getColor(R.color.main))
+            binding.btnBussiness.setBackgroundColor(resources.getColor(R.color.grayd9))
+            binding.btnEconomy.setBackgroundColor(resources.getColor(R.color.grayd9))
+        }
     }
 
 
