@@ -17,6 +17,13 @@
         android:theme="@style/Theme.C11Flight"
         tools:targetApi="31">
         <activity
+            android:name=".OrderDetailActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.view.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.C11Flight.NoActionBar">
@@ -62,7 +69,6 @@
         <activity
             android:name=".ui.view.HomeActivity"
             android:exported="true">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
