@@ -4,8 +4,15 @@ import android.service.autofill.UserData
 import com.ace.c11flight.data.model.AccountResponse
 import com.ace.c11flight.data.model.LoginInfo
 import com.ace.c11flight.data.model.UserInfo
+import com.ace.c11flight.data.services.ServiceBuilder.BASE_URL
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import java.util.concurrent.TimeUnit
 
 interface AccountApiService {
 
@@ -24,4 +31,36 @@ interface AccountApiService {
     suspend fun getUserById(
         @Path("id") id: Long,
     ): AccountResponse
+
+    @PUT("users/{id}")
+    suspend fun updateUserById(
+        @Path("id") id: Long,
+        @Body data: RequestBody
+    ): AccountResponse
+
+    companion object{
+
+        @JvmStatic
+        operator fun invoke() : AccountApiService{
+            val authInterceptor = Interceptor{
+                val originRequest = it.request()
+                val newUrl = originRequest.url.newBuilder().apply {
+                }.build()
+                it.proceed(originRequest.newBuilder().url(newUrl).build())
+            }
+
+            val okHttpClient = OkHttpClient.Builder()
+                .addInterceptor(authInterceptor)
+                .connectTimeout(120, TimeUnit.SECONDS)
+                .readTimeout(120, TimeUnit.SECONDS)
+                .build()
+
+            return Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build()
+                .create(AccountApiService::class.java)
+        }
+    }
 }

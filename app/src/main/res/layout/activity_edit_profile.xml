@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,80 +7,201 @@
     android:background="#EEF2FF"
     tools:context=".ui.view.EditProfileActivity">
 
-    <EditText
-        android:id="@+id/edt_fullname"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginRight="60dp"
-        android:background="@drawable/round_border"
-        android:drawablePadding="16dp"
-        android:hint="Full Name"
-        android:padding="20dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="#EEF2FF"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/edit_ttl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Tanggal Lahir"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:background="@drawable/round_border"
-        android:padding="20dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/edt_fullname"
-        app:layout_constraintStart_toStartOf="@+id/edt_fullname"
-        app:layout_constraintTop_toBottomOf="@+id/edt_fullname" />
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_baseline_account_box_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edit_jeniskelamin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:background="@drawable/round_border"
-        android:padding="20dp"
-        android:hint="Jenis Kelamin"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/edit_ttl"
-        app:layout_constraintStart_toStartOf="@+id/edit_ttl"
-        app:layout_constraintTop_toBottomOf="@+id/edit_ttl" />
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_address" />
 
-    <EditText
-        android:id="@+id/edit_nohp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginLeft="60dp"
-        android:background="@drawable/round_border"
-        android:padding="20dp"
-        android:textColor="@color/black"
-        android:hint="No. Handphone"
-        app:layout_constraintEnd_toEndOf="@+id/edit_jeniskelamin"
-        app:layout_constraintStart_toStartOf="@+id/edit_jeniskelamin"
-        app:layout_constraintTop_toBottomOf="@+id/edit_jeniskelamin" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_address"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="35dp"
+            android:hint="@string/address"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/til_phone"
+            app:layout_constraintStart_toStartOf="@+id/til_phone"
+            app:layout_constraintTop_toBottomOf="@+id/til_phone">
 
-    <Button
-        android:id="@+id/btnedit_perbarui"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginTop="30dp"
-        android:text="Perbarui"
-        android:textColor="@color/white"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/edit_nohp"
-        app:layout_constraintStart_toStartOf="@+id/edit_nohp"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nohp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="35dp"
+            android:hint="@string/email"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/til_lastname"
+            app:layout_constraintStart_toStartOf="@+id/til_lastname"
+            app:layout_constraintTop_toBottomOf="@+id/til_lastname">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_lastname"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="35dp"
+            android:hint="@string/last_name"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/til_firstname"
+            app:layout_constraintStart_toStartOf="@+id/til_firstname"
+            app:layout_constraintTop_toBottomOf="@+id/til_firstname">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_firstname"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="35dp"
+            android:hint="@string/first_name"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/til_username"
+            app:layout_constraintStart_toStartOf="@+id/til_username"
+            app:layout_constraintTop_toBottomOf="@+id/til_username">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_firstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="35dp"
+            android:hint="@string/username"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_phone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="35dp"
+            android:hint="@string/phone"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/til_email"
+            app:layout_constraintStart_toStartOf="@+id/til_email"
+            app:layout_constraintTop_toBottomOf="@+id/til_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:textAlignment="center"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="No Result data found" />
+
+        <ProgressBar
+            android:id="@+id/pb_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</ScrollView>

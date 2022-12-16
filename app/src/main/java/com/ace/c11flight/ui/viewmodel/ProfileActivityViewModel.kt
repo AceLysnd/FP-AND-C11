@@ -17,7 +17,11 @@ import javax.inject.Inject
 class ProfileActivityViewModel @Inject constructor(
     private val repository: LocalRepository,
     private val accountRepository: AccountRepository
-    ) : ViewModel() {
+) : ViewModel() {
+
+    val loadingState = MutableLiveData<Boolean>()
+    val errorState = MutableLiveData<Pair<Boolean, Exception?>>()
+
     fun saveLoginStatus(loginStatus: Boolean) {
         viewModelScope.launch {
             repository.setLoginStatus(loginStatus)
@@ -30,11 +34,24 @@ class ProfileActivityViewModel @Inject constructor(
 
     val _accountData = MutableLiveData<AccountResponse>()
     val accountData: LiveData<AccountResponse>
-    get() =_accountData
+    get() = _accountData
 
     fun getUserById() {
+        loadingState.postValue(true)
+        errorState.postValue(Pair(false, null))
         viewModelScope.launch {
-            _accountData.postValue(accountRepository.getUserById())
+            try {
+                viewModelScope.launch {
+                    _accountData.postValue(accountRepository.getUserById())
+                    loadingState.postValue(false)
+                    errorState.postValue(Pair(false, null))
+                }
+            } catch (e: Exception) {
+                viewModelScope.launch {
+                    loadingState.postValue(false)
+                    errorState.postValue(Pair(true, e))
+                }
+            }
         }
     }
 }

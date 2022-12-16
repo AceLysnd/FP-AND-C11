@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.ace.c11flight.databinding.ActivityProfileBinding
 import com.ace.c11flight.ui.viewmodel.ProfileActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,6 +34,16 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setUserInfo() {
         viewModel.getUserById()
+        viewModel.loadingState.observe(this) { isLoading ->
+            binding.pbPost.isVisible = isLoading
+        }
+
+        viewModel.errorState.observe(this) { errorData ->
+            binding.tvError.isVisible = errorData.first
+            errorData.second?.message?.let {
+                binding.tvError.text = it
+            }
+        }
         viewModel._accountData.observe(this){
             binding.tvUsername.text = it.data?.username
             binding.tvEmail.text = it.data?.email
@@ -48,6 +59,10 @@ class ProfileActivity : AppCompatActivity() {
         binding.btnLogOut.setOnClickListener{
             viewModel.saveLoginStatus(false)
             val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnEditProfile.setOnClickListener {
+            val intent = Intent(this, EditProfileActivity::class.java)
             startActivity(intent)
         }
     }
