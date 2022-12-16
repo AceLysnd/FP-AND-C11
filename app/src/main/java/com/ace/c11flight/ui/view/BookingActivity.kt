@@ -18,6 +18,8 @@ import kotlin.math.min
 class BookingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBookingBinding
     private val modelBooking:BookingViewModel by viewModels()
+    private val modelTeenager: BookingViewModel by viewModels()
+    private val modelChild : BookingViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingBinding.inflate(layoutInflater)
@@ -34,16 +36,37 @@ class BookingActivity : AppCompatActivity() {
         setOnclick()
         withViewModel()
         viewmodelTeenager()
+        viewModelChild()
+    }
+
+    private fun viewModelChild() {
+        binding.btnPlusChildren.setOnClickListener {
+            valuePlusChild()
+        }
+        binding.btnMinusChildreen.setOnClickListener {
+            valueMinChild()
+        }
+        modelChild.chilViewModel.observe(this) {
+            result -> binding.tvValueChildreen.text = result.toString()
+        }
+    }
+
+    private fun valueMinChild() {
+        modelChild.minvalueChild()
+    }
+
+    private fun valuePlusChild() {
+        modelChild.plusValuechild()
     }
 
     private fun viewmodelTeenager() {
         binding.btnPlusTeenager.setOnClickListener {
-            aincrement()
+            valuePlusTeenager()
         }
         binding.btnMinusTenager.setOnClickListener {
-            bincrement()
+            valueMinTeenager()
         }
-        modelBooking.valueBooking.observe(this) {
+        modelTeenager.valueTeenager.observe(this) {
             result -> binding.tvValueTeenager.text = result.toString()
         }
     }
@@ -60,6 +83,12 @@ class BookingActivity : AppCompatActivity() {
         }
     }
 
+    private fun valueMinTeenager() {
+        modelTeenager.minValueTeenager()
+    }
+    private fun valuePlusTeenager() {
+        modelTeenager.plusValueTeenager()
+    }
     private fun bincrement() {
         modelBooking.valueBookingMin()
     }
