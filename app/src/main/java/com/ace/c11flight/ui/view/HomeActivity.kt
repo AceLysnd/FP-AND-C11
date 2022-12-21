@@ -13,6 +13,9 @@ import com.ace.c11flight.R
 import com.ace.c11flight.databinding.ActivityHomeBinding
 import com.ace.c11flight.databinding.ActivityRegisterBinding
 import com.ace.c11flight.ui.viewmodel.HomeActivityViewModel
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,12 +25,12 @@ class HomeActivity : AppCompatActivity() {
     private val binding get() = _binding!!
 
     private val viewModel: HomeActivityViewModel by viewModels()
-
+    private lateinit var  analytics: FirebaseAnalytics
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        analytics = Firebase.analytics
 
         setBottomNav()
         isLoginInfoValid()

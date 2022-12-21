@@ -37,7 +37,15 @@ class BookingActivity : AppCompatActivity() {
         withViewModel()
         viewmodelTeenager()
         viewModelChild()
+
+        binding.btnSearchFlight.setOnClickListener {
+            val intent = Intent(this@BookingActivity,TicketActivity::class.java)
+            startActivity(intent)
+        }
+
     }
+
+
 
     private fun viewModelChild() {
         binding.btnPlusChildren.setOnClickListener {

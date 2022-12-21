@@ -21,8 +21,6 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeFragmentViewModel by viewModels()
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
