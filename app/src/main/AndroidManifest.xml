@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ace.c11flight">
+    package="com.ace.c11flight"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.android.com/apk/res/android ">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -17,26 +19,25 @@
         android:theme="@style/Theme.C11Flight"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
-            android:name=".SelectFlightActivity"
+            android:name=".ui.view.SelectFlightActivity"
             android:exported="false" />
         <activity
-            android:name=".PaymentPageActivity"
+            android:name=".ui.view.PaymentPageActivity"
             android:exported="false" />
         <activity
-            android:name=".SelectDateActivity"
+            android:name=".ui.view.SelectDateActivity"
             android:exported="false" />
-=======
-            android:name=".TicketActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
->>>>>>> 1a7da20 (e-flight)
         <activity
-            android:name=".OrderDetailActivity"
-            android:exported="false">
+            android:name=".ui.view.TicketActivity"
+            android:value="" />
+
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
+        <activity
+            android:name=".ui.view.OrderDetailActivity"
+            android:exported="false"
+            tools:ignore="MissingClass">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -57,7 +58,8 @@
         </activity>
         <activity
             android:name=".ui.view.AirPortList"
-            android:exported="false">
+            android:exported="false"
+            tools:ignore="WrongManifestParent">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -96,10 +98,13 @@
             android:exported="false" />
         <activity
             android:name=".ui.view.RegisterActivity"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
     </application>
+
 
 </manifest>
