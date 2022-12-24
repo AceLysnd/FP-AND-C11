@@ -105,4 +105,6 @@
     <string name="phone">Phone</string>
     <string name="address">Address</string>
     <string name="roundtrip">Round Trip</string>
+    <string name="Tiecket_title">Take Off</string>
+    <string name="time_today">10.00</string>
 </resources>
