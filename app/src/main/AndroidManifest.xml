@@ -65,7 +65,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.view.AirPortList"
+            android:name=".ui.view.AirportListActivity"
             android:exported="false"
             tools:ignore="WrongManifestParent">
             <meta-data

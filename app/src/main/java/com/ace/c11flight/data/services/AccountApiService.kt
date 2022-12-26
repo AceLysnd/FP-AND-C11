@@ -2,6 +2,7 @@ package com.ace.c11flight.data.services
 
 import android.service.autofill.UserData
 import com.ace.c11flight.data.model.AccountResponse
+import com.ace.c11flight.data.model.AirportListResponse
 import com.ace.c11flight.data.model.LoginInfo
 import com.ace.c11flight.data.model.UserInfo
 import com.ace.c11flight.data.services.ServiceBuilder.BASE_URL
@@ -37,6 +38,10 @@ interface AccountApiService {
         @Path("id") id: Long,
         @Body data: RequestBody
     ): AccountResponse
+
+    @GET("airport")
+    suspend fun getAirportList(
+    ): AirportListResponse
 
     companion object{
 

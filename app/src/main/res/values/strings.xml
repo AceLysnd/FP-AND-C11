@@ -107,4 +107,8 @@
     <string name="roundtrip">Round Trip</string>
     <string name="Tiecket_title">Take Off</string>
     <string name="time_today">10.00</string>
+    <string name="airport_name">Airport Name</string>
+    <string name="airport_city">Airport City</string>
+    <string name="airport_code">Airport Code</string>
+    <string name="airport_country">Airport Country</string>
 </resources>

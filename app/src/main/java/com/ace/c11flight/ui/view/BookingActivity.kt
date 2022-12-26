@@ -13,6 +13,7 @@ import com.ace.c11flight.R
 import com.ace.c11flight.data.model.BookingViewModel
 import com.ace.c11flight.data.model.TeenagerViewModel
 import com.ace.c11flight.databinding.ActivityBookingBinding
+import com.ace.c11flight.ui.view.HomeFragment.Companion.REQUEST_SOURCE
 import kotlin.math.min
 
 class BookingActivity : AppCompatActivity() {
@@ -25,24 +26,25 @@ class BookingActivity : AppCompatActivity() {
         binding = ActivityBookingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val extras = intent.extras
-
-//        if (extras != null) {
-//            getDetails(extras)
-//
-//        } else {
-//            finish()
-//        }
         setOnclick()
         withViewModel()
         viewmodelTeenager()
         viewModelChild()
         goTowishlist()
+
+        initData()
         binding.btnSearchFlight.setOnClickListener {
             val intent = Intent(this@BookingActivity,TicketActivity::class.java)
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun initData() {
+        binding.tvFromCode.text = AIRPORT_CODE_FROM
+        binding.etFrom.hint = AIRPORT_CITY_FROM
+        binding.tvToCode.text = AIRPORT_CODE_TO
+        binding.etTo.hint = AIRPORT_CITY_TO
     }
 
     private fun goTowishlist() {
@@ -112,6 +114,21 @@ class BookingActivity : AppCompatActivity() {
     }
 
     private fun setOnclick() {
+
+        binding.tvFromCode.setOnClickListener{
+            AIRPORT_COUNTER = 1
+            REQUEST_SOURCE = 1
+            intent = Intent(this, AirportListActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvToCode.setOnClickListener {
+            AIRPORT_COUNTER = 2
+            REQUEST_SOURCE = 1
+            intent = Intent(this, AirportListActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnOneway.setOnClickListener {
             binding.btnOneway.setBackgroundColor(resources.getColor(R.color.main))
             binding.btnRoundtrip.setBackgroundColor(resources.getColor(R.color.grayd9))
@@ -136,5 +153,11 @@ class BookingActivity : AppCompatActivity() {
             binding.btnEconomy.setBackgroundColor(resources.getColor(R.color.grayd9))
         }
     }
-
+    companion object{
+        var AIRPORT_COUNTER:Int = 0
+        var AIRPORT_CODE_FROM = "SUB"
+        var AIRPORT_CITY_FROM = "Surabaya"
+        var AIRPORT_CODE_TO = "SUB"
+        var AIRPORT_CITY_TO = "Surabaya"
+    }
 }

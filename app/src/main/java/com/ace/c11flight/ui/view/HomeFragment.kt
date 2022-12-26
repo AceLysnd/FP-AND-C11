@@ -36,15 +36,36 @@ class HomeFragment : Fragment() {
         isLoginInfoValid()
         setOnClickListeners()
         setUsername()
+        initData()
+    }
+
+    private fun initData() {
+        binding.tvFrom.text = BookingActivity.AIRPORT_CODE_FROM
+        binding.tvFromDesc.text = BookingActivity.AIRPORT_CITY_FROM
+        binding.tvTo.text = BookingActivity.AIRPORT_CODE_TO
+        binding.tvToDesc.text = BookingActivity.AIRPORT_CITY_TO
     }
 
     private fun setOnClickListeners() {
+        binding.tvFrom.setOnClickListener{
+            activity?.let {
+                val intent = Intent(it, AirportListActivity::class.java)
+                it.startActivity(intent)
+                REQUEST_SOURCE = 0
+                BookingActivity.AIRPORT_COUNTER = 1
+            }
+        }
+        binding.tvTo.setOnClickListener{
+            activity?.let {
+                val intent = Intent(it, AirportListActivity::class.java)
+                it.startActivity(intent)
+                REQUEST_SOURCE = 0
+                BookingActivity.AIRPORT_COUNTER = 2
+            }
+        }
         binding.btnBookNow.setOnClickListener{
             activity?.let {
                 val intent = Intent(it, BookingActivity::class.java)
-                intent.putExtra(FROM_DESTINATION, binding.tvFrom.text)
-                intent.putExtra(TO_DESTINATION, binding.tvTo.text)
-
                 it.startActivity(intent)
             }
         }
@@ -68,6 +89,10 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object{
+        var REQUEST_SOURCE:Int = 0
     }
 
 }
