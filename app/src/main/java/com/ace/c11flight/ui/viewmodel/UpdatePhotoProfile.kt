@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ace.c11flight.data.local.network.RetrofitClient
+import com.ace.c11flight.data.local.pojo.PhotoData
 import com.ace.c11flight.data.local.pojo.ProfileResponse
 import com.ace.c11flight.data.local.pojo.UpdatePhotoResponse
 import okhttp3.MultipartBody
@@ -24,8 +25,8 @@ class UpdatePhotoProfile: ViewModel() {
         return profileImageLiveData
     }
 
-    fun putProfileImage(token: String,id:Int, file : MultipartBody.Part) {
-        RetrofitClient.apiWithToken(token).putProfileImage(id,file)
+    fun putProfileImage(token: String,id:Long, file : MultipartBody.Part) {
+        RetrofitClient.apiWithToken(token).putProfileImage(id, file)
             .enqueue(object : Callback<UpdatePhotoResponse> {
                 override fun onResponse(
                     call: Call<UpdatePhotoResponse>,
@@ -34,7 +35,7 @@ class UpdatePhotoProfile: ViewModel() {
                     if (response.isSuccessful) {
                         profileImageLiveData.postValue(response.body())
                     } else {
-                        Log.d("failed", response.body().toString())
+                        Log.d("failed putphoto", response.body().toString())
                     }
                 }
 

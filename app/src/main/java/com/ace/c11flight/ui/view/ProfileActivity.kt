@@ -8,10 +8,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
@@ -19,8 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.view.isVisible
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import com.ace.c11flight.databinding.ActivityProfileBinding
 import com.ace.c11flight.ui.viewmodel.ProfileActivityViewModel
@@ -32,6 +29,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
+
 
 @AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
@@ -76,7 +74,7 @@ class ProfileActivity : AppCompatActivity() {
         var ACCOUNT_ID: Long = 0
     }
 
-    private fun postProfileImage(id : Int, imageMultiPart: MultipartBody.Part) {
+    private fun postProfileImage(id : Long, imageMultiPart: MultipartBody.Part) {
         val viewModel = ViewModelProvider(this)[UpdatePhotoProfile::class.java]
         viewModel.putProfileImageData().observe(this) {
             if (it != null){
@@ -94,7 +92,7 @@ class ProfileActivity : AppCompatActivity() {
             if (it != null) {
                 Glide
                     .with(this)
-                    .load(it.data!!.photo)
+                    .load(it.data!!.photo!!.toUri().buildUpon().scheme("https").build())
                     .centerCrop()
                     .into(binding.imgProfile)
                 binding.tvUsername.text = it.data.username
@@ -119,7 +117,7 @@ class ProfileActivity : AppCompatActivity() {
             if (it.data!!.photo != "") {
                 Glide
                     .with(this)
-                    .load(it.data.photo)
+                    .load(it.data.photo!!.toUri().buildUpon().scheme("https").build())
                     .centerCrop()
                     .into(binding.imgProfile)
             } else {
@@ -204,7 +202,8 @@ class ProfileActivity : AppCompatActivity() {
                 val requestBody: RequestBody = tempFile.asRequestBody(type?.toMediaType())
                 imageMultiPart = MultipartBody.Part.createFormData("file", tempFile.name, requestBody)
 
-                postProfileImage(sharedPref.getLong("id",0).toInt(), imageMultiPart!!)
+                val id = sharedPref.getLong("id",0)
+                postProfileImage(id, imageMultiPart!!)
             }
         }
 

@@ -10,7 +10,9 @@ interface RestfulApi {
 
     @Multipart
     @PUT("users/{id}")
-    fun putProfileImage(@Path("id") id: Int,@Part file : MultipartBody.Part) : Call<UpdatePhotoResponse>
+    fun putProfileImage(
+        @Path("id") id: Long,
+        @Part photo : MultipartBody.Part) : Call<UpdatePhotoResponse>
 
     @GET("user")
     fun getProfile() : Call<ProfileResponse>
