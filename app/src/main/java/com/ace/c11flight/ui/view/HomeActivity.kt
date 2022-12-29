@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.ace.c11flight.R
 import com.ace.c11flight.databinding.ActivityHomeBinding
 import com.ace.c11flight.databinding.ActivityRegisterBinding
+import com.ace.c11flight.ui.view.ProfileActivity.Companion.ACCOUNT_ID
 import com.ace.c11flight.ui.viewmodel.HomeActivityViewModel
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
@@ -69,6 +70,9 @@ class HomeActivity : AppCompatActivity() {
                 binding.messageLogin.visibility = View.GONE
             }
         }
+        viewModel.getAccountPrefs().observe(this) {
+            ACCOUNT_ID = it.accountId
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -112,4 +116,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    companion object {
+    }
 }

@@ -30,7 +30,6 @@ class BookingActivity : AppCompatActivity() {
         withViewModel()
         viewmodelTeenager()
         viewModelChild()
-        goTowishlist()
 
         initData()
     }
@@ -41,14 +40,6 @@ class BookingActivity : AppCompatActivity() {
         binding.tvToCode.text = AIRPORT_CODE_TO
         binding.etTo.hint = AIRPORT_CITY_TO
     }
-
-    private fun goTowishlist() {
-        binding.btnWislist.setOnClickListener {
-            val intent = Intent(this@BookingActivity, WishlistActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
 
     private fun viewModelChild() {
         binding.btnPlusChildren.setOnClickListener {
@@ -175,7 +166,7 @@ class BookingActivity : AppCompatActivity() {
         var AIRPORT_CITY_FROM = "Surabaya"
         var AIRPORT_CODE_TO = "SUB"
         var AIRPORT_CITY_TO = "Surabaya"
-        var TYPE_CODE = ""
+        var TYPE_CODE = "0"
         var CATEGORY_CODE = "Economi"
         var PASSENGER_COUNT = 0
     }

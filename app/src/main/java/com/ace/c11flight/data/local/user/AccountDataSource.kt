@@ -19,7 +19,6 @@ class AccountDataSource @Inject constructor(private val accountDao: AccountDao) 
     suspend fun getUser(username: String) : AccountEntity {
         return accountDao.getUser(username)
     }
-
 }
 
 //class AccountDataSourceImpl: AccountDataSource {

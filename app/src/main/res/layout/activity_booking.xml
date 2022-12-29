@@ -436,16 +436,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_Bussiness" />
 
-            <Button
-                android:id="@+id/btn_wislist"
-                android:layout_width="55dp"
-                android:layout_height="46dp"
-                android:layout_marginBottom="24dp"
-                android:background="@mipmap/ic_wishlist"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.467"
-                app:layout_constraintStart_toEndOf="@+id/btn_search_Flight" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </ScrollView>

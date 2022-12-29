@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.ace.c11flight.R
 import com.ace.c11flight.databinding.ActivityOrderDetailBinding
 import com.ace.c11flight.ui.view.BookingActivity.Companion.PASSENGER_COUNT
 import com.ace.c11flight.ui.view.BookingActivity.Companion.TYPE_CODE
@@ -20,6 +21,13 @@ class OrderDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         observeData()
+        setOnclickListeners()
+    }
+
+    private fun setOnclickListeners() {
+        binding.wishlist.setOnClickListener{
+            binding.wishlist.setImageResource(R.drawable.ic_wishlist_clicked)
+        }
     }
 
     private fun observeData() {
