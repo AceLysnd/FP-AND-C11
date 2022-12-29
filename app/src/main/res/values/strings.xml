@@ -111,4 +111,18 @@
     <string name="airport_city">Airport City</string>
     <string name="airport_code">Airport Code</string>
     <string name="airport_country">Airport Country</string>
+    <string name="flight_id">Flight ID</string>
+    <string name="type">Type</string>
+    <string name="price">Price</string>
+    <string name="desc">Desc</string>
+    <string name="titikdua">:</string>
+    <string name="date">Date</string>
+    <string name="ticket_details">Ticket Details</string>
+    <string name="date_created">Date Created</string>
+    <string name="date_updated">Date Updated</string>
+    <string name="edit_ticket_info">Edit Ticket Info</string>
+    <string name="delete">Delete</string>
+    <string name="create">Create</string>
+    <string name="ticket">Ticket</string>
+    <string name="create_ticket">Create Ticket</string>
 </resources>

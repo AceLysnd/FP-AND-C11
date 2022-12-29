@@ -12,6 +12,11 @@
         <item name="android:layout_marginLeft">16dp</item>
         <item name="textFillColor">?attr/textFillColor</item>
     </style>
+    <style name="ColoredDesc">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="textFillColor">@color/sub2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="Username">
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">?attr/colorAccent</item>

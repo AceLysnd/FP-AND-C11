@@ -1,10 +1,7 @@
 package com.ace.c11flight.data.services
 
 import android.service.autofill.UserData
-import com.ace.c11flight.data.model.AccountResponse
-import com.ace.c11flight.data.model.AirportListResponse
-import com.ace.c11flight.data.model.LoginInfo
-import com.ace.c11flight.data.model.UserInfo
+import com.ace.c11flight.data.model.*
 import com.ace.c11flight.data.services.ServiceBuilder.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -42,6 +39,15 @@ interface AccountApiService {
     @GET("airport")
     suspend fun getAirportList(
     ): AirportListResponse
+
+    @GET("ticket")
+    suspend fun getTickets(
+    ): TicketListResponse
+
+    @GET("ticket/{id}")
+    suspend fun getTicketById(
+        @Path("id") id: Int,
+    ): TicketResponse
 
     companion object{
 

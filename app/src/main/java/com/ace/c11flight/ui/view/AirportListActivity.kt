@@ -93,4 +93,11 @@ class AirportListActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        intent = Intent(this, BookingActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

@@ -18,9 +18,9 @@ import kotlin.math.min
 
 class BookingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBookingBinding
-    private val modelBooking:BookingViewModel by viewModels()
+    private val modelBooking: BookingViewModel by viewModels()
     private val modelTeenager: BookingViewModel by viewModels()
-    private val modelChild : BookingViewModel by viewModels()
+    private val modelChild: BookingViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingBinding.inflate(layoutInflater)
@@ -33,11 +33,6 @@ class BookingActivity : AppCompatActivity() {
         goTowishlist()
 
         initData()
-        binding.btnSearchFlight.setOnClickListener {
-            val intent = Intent(this@BookingActivity,TicketActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
     }
 
     private fun initData() {
@@ -49,7 +44,7 @@ class BookingActivity : AppCompatActivity() {
 
     private fun goTowishlist() {
         binding.btnWislist.setOnClickListener {
-            val intent = Intent(this@BookingActivity,WishlistActivity::class.java)
+            val intent = Intent(this@BookingActivity, WishlistActivity::class.java)
             startActivity(intent)
         }
     }
@@ -62,8 +57,8 @@ class BookingActivity : AppCompatActivity() {
         binding.btnMinusChildreen.setOnClickListener {
             valueMinChild()
         }
-        modelChild.chilViewModel.observe(this) {
-            result -> binding.tvValueChildreen.text = result.toString()
+        modelChild.chilViewModel.observe(this) { result ->
+            binding.tvValueChildreen.text = result.toString()
         }
     }
 
@@ -82,8 +77,8 @@ class BookingActivity : AppCompatActivity() {
         binding.btnMinusTenager.setOnClickListener {
             valueMinTeenager()
         }
-        modelTeenager.valueTeenager.observe(this) {
-            result -> binding.tvValueTeenager.text = result.toString()
+        modelTeenager.valueTeenager.observe(this) { result ->
+            binding.tvValueTeenager.text = result.toString()
         }
     }
 
@@ -94,7 +89,7 @@ class BookingActivity : AppCompatActivity() {
         binding.btnMinusPlus.setOnClickListener {
             bincrement()
         }
-        modelBooking.valueBooking.observe(this) {result ->
+        modelBooking.valueBooking.observe(this) { result ->
             binding.tvValueAdult.text = result.toString()
         }
     }
@@ -102,20 +97,35 @@ class BookingActivity : AppCompatActivity() {
     private fun valueMinTeenager() {
         modelTeenager.minValueTeenager()
     }
+
     private fun valuePlusTeenager() {
         modelTeenager.plusValueTeenager()
     }
+
     private fun bincrement() {
         modelBooking.valueBookingMin()
     }
 
-    private fun aincrement(){
+    private fun aincrement() {
         modelBooking.valueBookingPlus()
     }
 
     private fun setOnclick() {
 
-        binding.tvFromCode.setOnClickListener{
+        binding.btnSearchFlight.setOnClickListener {
+            val valueAdult = binding.tvValueAdult.text.toString()
+            val valueTeenager = binding.tvValueTeenager.text.toString()
+            val valueChild = binding.tvValueChildreen.text.toString()
+            PASSENGER_COUNT =
+                Integer.parseInt(valueAdult) + Integer.parseInt(valueTeenager) + Integer.parseInt(
+                    valueChild
+                )
+            val intent = Intent(this, TicketListActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.tvFromCode.setOnClickListener {
             AIRPORT_COUNTER = 1
             REQUEST_SOURCE = 1
             intent = Intent(this, AirportListActivity::class.java)
@@ -132,32 +142,41 @@ class BookingActivity : AppCompatActivity() {
         binding.btnOneway.setOnClickListener {
             binding.btnOneway.setBackgroundColor(resources.getColor(R.color.main))
             binding.btnRoundtrip.setBackgroundColor(resources.getColor(R.color.grayd9))
+            TYPE_CODE = "1"
         }
         binding.btnRoundtrip.setOnClickListener {
             binding.btnRoundtrip.setBackgroundColor(resources.getColor(R.color.main))
             binding.btnOneway.setBackgroundColor(resources.getColor(R.color.grayd9))
+            TYPE_CODE = "2"
         }
         binding.btnEconomy.setOnClickListener {
             binding.btnEconomy.setBackgroundColor(resources.getColor(R.color.main))
             binding.btnBussiness.setBackgroundColor(resources.getColor(R.color.grayd9))
             binding.btnFirstclass.setBackgroundColor(resources.getColor(R.color.grayd9))
+            CATEGORY_CODE = "Economy"
         }
         binding.btnBussiness.setOnClickListener {
             binding.btnBussiness.setBackgroundColor(resources.getColor(R.color.main))
             binding.btnEconomy.setBackgroundColor(resources.getColor(R.color.grayd9))
             binding.btnFirstclass.setBackgroundColor(resources.getColor(R.color.grayd9))
+            CATEGORY_CODE = "Business"
         }
         binding.btnFirstclass.setOnClickListener {
             binding.btnFirstclass.setBackgroundColor(resources.getColor(R.color.main))
             binding.btnBussiness.setBackgroundColor(resources.getColor(R.color.grayd9))
             binding.btnEconomy.setBackgroundColor(resources.getColor(R.color.grayd9))
+            CATEGORY_CODE = "First Class"
         }
     }
-    companion object{
-        var AIRPORT_COUNTER:Int = 0
+
+    companion object {
+        var AIRPORT_COUNTER: Int = 0
         var AIRPORT_CODE_FROM = "SUB"
         var AIRPORT_CITY_FROM = "Surabaya"
         var AIRPORT_CODE_TO = "SUB"
         var AIRPORT_CITY_TO = "Surabaya"
+        var TYPE_CODE = ""
+        var CATEGORY_CODE = "Economi"
+        var PASSENGER_COUNT = 0
     }
 }
