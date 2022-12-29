@@ -3,6 +3,7 @@ package com.ace.c11flight.data.services
 import android.service.autofill.UserData
 import com.ace.c11flight.data.model.*
 import com.ace.c11flight.data.services.ServiceBuilder.BASE_URL
+import com.ace.c11flight.ui.view.PromoListActivity
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
@@ -39,6 +40,10 @@ interface AccountApiService {
     @GET("airport")
     suspend fun getAirportList(
     ): AirportListResponse
+
+    @GET("promo")
+    suspend fun getPromoList(
+    ): PromoListResponse
 
     @GET("ticket")
     suspend fun getTickets(

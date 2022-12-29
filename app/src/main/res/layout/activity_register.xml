@@ -86,43 +86,20 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginEnd="35dp"
             android:hint="@string/enter_password"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
             app:boxCornerRadiusTopEnd="25dp"
             app:boxCornerRadiusTopStart="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/til_address"
-            app:layout_constraintStart_toStartOf="@+id/til_address"
-            app:layout_constraintTop_toBottomOf="@+id/til_address">
+            app:layout_constraintEnd_toEndOf="@+id/til_email"
+            app:layout_constraintStart_toStartOf="@+id/til_email"
+            app:layout_constraintTop_toBottomOf="@+id/til_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_address"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="35dp"
-            android:hint="@string/address"
-            app:boxCornerRadiusBottomEnd="25dp"
-            app:boxCornerRadiusBottomStart="25dp"
-            app:boxCornerRadiusTopEnd="25dp"
-            app:boxCornerRadiusTopStart="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/til_phone"
-            app:layout_constraintStart_toStartOf="@+id/til_phone"
-            app:layout_constraintTop_toBottomOf="@+id/til_phone">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -133,56 +110,10 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginEnd="35dp"
             android:hint="@string/email"
-            app:boxCornerRadiusBottomEnd="25dp"
-            app:boxCornerRadiusBottomStart="25dp"
-            app:boxCornerRadiusTopEnd="25dp"
-            app:boxCornerRadiusTopStart="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/til_lastname"
-            app:layout_constraintStart_toStartOf="@+id/til_lastname"
-            app:layout_constraintTop_toBottomOf="@+id/til_lastname">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_lastname"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="35dp"
-            android:hint="@string/last_name"
-            app:boxCornerRadiusBottomEnd="25dp"
-            app:boxCornerRadiusBottomStart="25dp"
-            app:boxCornerRadiusTopEnd="25dp"
-            app:boxCornerRadiusTopStart="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/til_firstname"
-            app:layout_constraintStart_toStartOf="@+id/til_firstname"
-            app:layout_constraintTop_toBottomOf="@+id/til_firstname">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_lastname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_firstname"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="35dp"
-            android:hint="@string/first_name"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
             app:boxCornerRadiusTopEnd="25dp"
@@ -192,7 +123,7 @@
             app:layout_constraintTop_toBottomOf="@+id/til_username">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etfirstname"
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -232,28 +163,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_phone"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/phone"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            app:boxCornerRadiusBottomStart="25dp"
-            app:boxCornerRadiusBottomEnd="25dp"
-            app:boxCornerRadiusTopEnd="25dp"
-            app:boxCornerRadiusTopStart="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/til_email"
-            app:layout_constraintStart_toStartOf="@+id/til_email"
-            app:layout_constraintTop_toBottomOf="@+id/til_email">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

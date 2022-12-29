@@ -1,5 +1,6 @@
 package com.ace.c11flight.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,8 @@ import com.ace.c11flight.R
 import com.ace.c11flight.databinding.ActivityOrderDetailBinding
 import com.ace.c11flight.ui.view.BookingActivity.Companion.PASSENGER_COUNT
 import com.ace.c11flight.ui.view.BookingActivity.Companion.TYPE_CODE
+import com.ace.c11flight.ui.view.PromoListActivity.Companion.APPLIED_PROMO
+import com.ace.c11flight.ui.view.PromoListActivity.Companion.PROMO_NAME
 import com.ace.c11flight.ui.viewmodel.TicketListActivityViewModel
 
 class OrderDetailActivity : AppCompatActivity() {
@@ -22,11 +25,28 @@ class OrderDetailActivity : AppCompatActivity() {
 
         observeData()
         setOnclickListeners()
+        initData()
+    }
+
+    private fun initData() {
+        if (APPLIED_PROMO != 0){
+            binding.applyPromo.isVisible = false
+            binding.promoName.isVisible = true
+            binding.promoDiscount.isVisible = true
+            binding.promoName.text = PROMO_NAME
+            binding.promoDiscount.text = "-Rp. " + APPLIED_PROMO.toString()
+        }
     }
 
     private fun setOnclickListeners() {
         binding.wishlist.setOnClickListener{
             binding.wishlist.setImageResource(R.drawable.ic_wishlist_clicked)
+        }
+
+        binding.cvPromo.setOnClickListener{
+            intent = Intent(this, PromoListActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -54,13 +74,14 @@ class OrderDetailActivity : AppCompatActivity() {
             var totalPricePassenger = pricePassenger?.times(PASSENGER_COUNT)
             val ticketType = Integer.parseInt(TYPE_CODE)
             if (ticketType == 2) {
-                binding.tvFlightType.isVisible
-                binding.tvReturnDate.isVisible
-                binding.returnDateDesc.isVisible
-                binding.tvJumlahSatu.text = "Rp. " + totalPricePassenger?.times(2)
-            } else{
-                binding.tvJumlahSatu.text = "Rp. " + totalPricePassenger.toString()
+                binding.tvFlightType.isVisible = true
+                binding.tvReturnDate.isVisible = true
+                binding.returnDateDesc.isVisible = true
+                totalPricePassenger = totalPricePassenger?.times(2)
             }
+            binding.tvJumlahSatu.text = "Rp. " + totalPricePassenger.toString()
+            binding.tvJumlahTiga.text = "-Rp. " + APPLIED_PROMO.toString()
+            binding.tvTotal.text = "Rp. " + (totalPricePassenger?.minus(APPLIED_PROMO)).toString()
 
 
 //            binding.tvJumlahDua.text =
