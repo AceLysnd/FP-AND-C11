@@ -37,20 +37,18 @@ class BookingActivity : AppCompatActivity() {
         withViewModel()
         viewmodelTeenager()
         viewModelChild()
-        goTowishlist()
+     //   goTowishlist()
         binding.btnSearchFlight.setOnClickListener {
             val intent = Intent(this@BookingActivity,TicketActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
-
-    private fun goTowishlist() {
-        binding.btnWislist.setOnClickListener {
-            val intent = Intent(this@BookingActivity,WishlistActivity::class.java)
-            startActivity(intent)
-        }
-    }
+//    private fun goTowishlist() {
+//        binding.btnWislist.setOnClickListener {
+//            val intent = Intent(this@BookingActivity,WishlistActivity::class.java)
+//            startActivity(intent)
+//        }
+//    }
 
 
     private fun viewModelChild() {

@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="355dp"
-        android:layout_height="99dp"
+        android:layout_height="150dp"
         app:cardCornerRadius="20dp"
         android:backgroundTint="#C4DDFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,5 +35,24 @@
             android:layout_marginStart="20dp"
             android:textColorHint="@color/black"
             />
+
+
+        <TextView
+            android:id="@+id/total_pasesenger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="20dp"
+            android:text="Total Passenger :"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/Number_passenger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="150dp"
+            android:textColor="@color/black"
+            android:text="1"/>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

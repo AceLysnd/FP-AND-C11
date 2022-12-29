@@ -1,6 +1,10 @@
 package com.ace.c11flight.ui.view
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -8,6 +12,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import com.ace.c11flight.R
 import com.ace.c11flight.databinding.ActivityHomeBinding
@@ -35,7 +41,12 @@ class HomeActivity : AppCompatActivity() {
         setBottomNav()
         isLoginInfoValid()
         setOnClickListeners()
+
     }
+
+
+
+
 
     private fun setBottomNav() {
         val homeFragment = HomeFragment()
