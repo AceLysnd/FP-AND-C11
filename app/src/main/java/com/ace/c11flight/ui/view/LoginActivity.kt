@@ -1,6 +1,8 @@
 package com.ace.c11flight.ui.view
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -17,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
 
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
+    private lateinit var sharedPref: SharedPreferences
 
     private val viewModel: LoginActivityViewModel by viewModels()
 
@@ -24,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        sharedPref = this.getSharedPreferences("datatoken", Context.MODE_PRIVATE)
         setOnClickListeners()
     }
 
@@ -62,6 +65,10 @@ class LoginActivity : AppCompatActivity() {
                         password = it.data.password!!,
                         id = it.data.id!!
                     )
+                    val saveUser = sharedPref.edit()
+                    saveUser.putString("token",it.data.token)
+                    saveUser.putLong("id",it.data.id)
+                    saveUser.apply()
                     goToHome()
                 } else {
                     Toast.makeText(this, "Email or password is not identified", Toast.LENGTH_SHORT)
