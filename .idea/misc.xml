@@ -21,6 +21,7 @@
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/drawable/ic_more.xml" value="0.1285" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/drawable/ic_notification.xml" value="0.1285" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/drawable/ic_promo.xml" value="0.1285" />
+        <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/drawable/ic_settings.xml" value="0.126" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/drawable/ic_wishlist.xml" value="0.126" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/drawable/round_border.xml" value="0.1265" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/drawable/rounded.xml" value="0.1265" />
@@ -45,12 +46,14 @@
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/activity_select_flight.xml" value="0.16" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/activity_ticket.xml" value="0.25" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/activity_ticket_list.xml" value="0.2234375" />
+        <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/activity_transaction_history.xml" value="0.12868747327917915" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/fragment_booking.xml" value="0.25" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/fragment_home.xml" value="0.44759825327510916" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/fragment_more.xml" value="0.23405909797822705" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/item_home_promo.xml" value="0.25" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/item_promo.xml" value="0.25" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/item_ticket.xml" value="0.25" />
+        <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/item_transactions.xml" value="0.25" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/layout/list_airport.xml" value="0.33" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/menu/bottom_menu.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/ilham/AndroidStudioProjects/C11Flight/app/src/main/res/menu/menu_home.xml" value="0.25" />

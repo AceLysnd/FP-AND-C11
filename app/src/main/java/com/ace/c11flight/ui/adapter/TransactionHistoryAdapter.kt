@@ -2,26 +2,24 @@ package com.ace.c11flight.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.ace.c11flight.data.model.Ticket
-import com.ace.c11flight.databinding.ItemTicketBinding
-import com.ace.c11flight.ui.view.BookingActivity.Companion.AIRPORT_CITY_FROM
-import com.ace.c11flight.ui.view.BookingActivity.Companion.AIRPORT_CODE_FROM
-import com.ace.c11flight.ui.view.BookingActivity.Companion.AIRPORT_CODE_TO
-import com.ace.c11flight.ui.view.BookingActivity.Companion.CATEGORY_CODE
-import android.widget.Filter
+import com.ace.c11flight.data.model.TransactionData
+import com.ace.c11flight.databinding.ItemTransactionsBinding
+import com.ace.c11flight.ui.view.HomeActivity.Companion.USERNAME
 
-class TicketAdapter(
-    private var items: ArrayList<Ticket>,
-    private var itemsFiltered: ArrayList<Ticket>,
-    private val onUserClick: (ticket: Ticket) -> Unit
+class TransactionHistoryAdapter (
+    private var items: ArrayList<TransactionData>,
+    private var itemsFiltered: ArrayList<TransactionData>,
+    private val onUserClick: (transactionData: TransactionData) -> Unit
 ) :
-    RecyclerView.Adapter<TicketAdapter.PostViewHolder>(), Filterable {
+    RecyclerView.Adapter<TransactionHistoryAdapter.PostViewHolder>(), Filterable {
 
 
-    fun setItems(list: List<Ticket>?) {
-        items = list as ArrayList<Ticket>
+    fun addItem(list: List<TransactionData>?) {
+        items = list as ArrayList<TransactionData>
         itemsFiltered = items
         notifyDataSetChanged()
     }
@@ -32,7 +30,7 @@ class TicketAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val binding = ItemTicketBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemTransactionsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PostViewHolder(binding)
     }
 
@@ -43,19 +41,21 @@ class TicketAdapter(
     override fun getItemCount(): Int = itemsFiltered.size
 
 
-    inner class PostViewHolder(private val binding: ItemTicketBinding) :
+    inner class PostViewHolder(private val binding: ItemTransactionsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindView(results: Ticket) {
+        fun bindView(results: TransactionData) {
             itemView.setOnClickListener { }
-            binding.tvPlaneDesc.text = results.flight?.plane?.name
-            binding.tvType.text = results.type.toString()
-            binding.tvPrice.text = results.price.toString()
-            binding.tvDesc.text = results.desc.toString()
-            binding.tvToCode.text = results.flight?.to?.cityCode
-            binding.tvToDesc.text = results.flight?.to?.city
-            binding.tvFromCode.text = results.flight?.from?.cityCode
-            binding.tvFromDesc.text = results.flight?.from?.city
+            binding.tvUsernameDesc.text = results.user?.username
+            binding.tvType.text = results.ticket?.type.toString()
+            binding.tvPrice.text = "Rp. " + results.total.toString()
+            binding.tvPromo.text = results.promo?.name
+            binding.tvToCode.text = results.ticket?.flight?.to?.cityCode
+            binding.tvToDesc.text = results.ticket?.flight?.to?.city
+            binding.tvFromCode.text = results.ticket?.flight?.from?.cityCode
+            binding.tvFromDesc.text = results.ticket?.flight?.from?.city
+            binding.tvTransactionTime.text = results.createdAt
+            binding.tvTransId.text = "#" + results.id.toString()
 
             itemView.setOnClickListener { onUserClick.invoke(results) }
 
@@ -69,11 +69,10 @@ class TicketAdapter(
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charString = constraint?.toString() ?: ""
                 if (charString.isEmpty()) itemsFiltered = items else {
-                    val filteredList = ArrayList<Ticket>()
+                    val filteredList = ArrayList<TransactionData>()
                     items
                         .filter {
-                            (it.flight?.from?.cityCode?.contains(constraint!!))!! &&
-                                    (it.flight?.to?.cityCode?.contains(AIRPORT_CODE_TO)!!)
+                            (it.userId.toString().contains(constraint!!))
                         }
                         .forEach { filteredList.add(it) }
                     itemsFiltered = filteredList
@@ -85,7 +84,7 @@ class TicketAdapter(
                 itemsFiltered = if (results?.values == null)
                     ArrayList()
                 else
-                    results.values as ArrayList<Ticket>
+                    results.values as ArrayList<TransactionData>
                 notifyDataSetChanged()
             }
         }

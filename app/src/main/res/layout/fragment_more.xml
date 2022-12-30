@@ -64,14 +64,16 @@
                         app:layout_constraintTop_toBottomOf="@+id/ivPromo" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/btnHistory"
                     android:paddingHorizontal="24sp">
 
                     <ImageView
-                        android:id="@+id/ivInfo"
+                        android:id="@+id/ivHistory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_info"
+                        android:src="@drawable/ic_history"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -80,12 +82,11 @@
                         style="@style/BigColoredHeadline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Info"
+                        android:text="History"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivInfo" />
+                        app:layout_constraintTop_toBottomOf="@+id/ivHistory" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:paddingHorizontal="24sp">
 
@@ -107,6 +108,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ivMore" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </GridLayout>
         </androidx.cardview.widget.CardView>
 

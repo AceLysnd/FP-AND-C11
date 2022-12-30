@@ -1,25 +1,17 @@
 package com.ace.c11flight.ui.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ace.c11flight.R
 import com.ace.c11flight.data.model.Ticket
-import com.ace.c11flight.databinding.ActivityBookingBinding
 import com.ace.c11flight.databinding.ActivityTicketListBinding
 import com.ace.c11flight.ui.adapter.TicketAdapter
-import com.ace.c11flight.ui.adapter.TicketAdapter.Companion.PASSED_FILTER
 import com.ace.c11flight.ui.view.BookingActivity.Companion.AIRPORT_CODE_FROM
-import com.ace.c11flight.ui.view.BookingActivity.Companion.AIRPORT_CODE_TO
-import com.ace.c11flight.ui.view.BookingActivity.Companion.PASSENGER_COUNT
 import com.ace.c11flight.ui.viewmodel.TicketListActivityViewModel
 
 class TicketListActivity : AppCompatActivity() {

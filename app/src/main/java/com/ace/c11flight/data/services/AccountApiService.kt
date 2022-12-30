@@ -59,6 +59,10 @@ interface AccountApiService {
         @Body transaction: RequestBody
     ): Transaction
 
+    @GET("transaction")
+    suspend fun getTransactionList(
+    ): TransactionListResponse
+
     @GET("transaction/{id}")
     suspend fun getTransactionById(
         @Path("id") id: Int?,
