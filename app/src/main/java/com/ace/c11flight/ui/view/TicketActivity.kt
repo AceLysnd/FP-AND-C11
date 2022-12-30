@@ -1,8 +1,12 @@
 package com.ace.c11flight.ui.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ace.c11flight.R
+import androidx.appcompat.app.AppCompatActivity
+//import android.os.Bundle
+//import androidx.recyclerview.widget.LinearLayoutManager
+//import androidx.recyclerview.widget.RecyclerView
+//import com.ace.c11flight.R
+//import com.ace.c11flight.data.model.AdapterWislit
 import com.ace.c11flight.databinding.ActivityTicketBinding
 
 class TicketActivity : AppCompatActivity() {
@@ -11,6 +15,7 @@ class TicketActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTicketBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
     }
 }

@@ -1,11 +1,19 @@
 package com.ace.c11flight.ui.view
 
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -21,18 +29,68 @@ class BookingActivity : AppCompatActivity() {
     private val modelBooking: BookingViewModel by viewModels()
     private val modelTeenager: BookingViewModel by viewModels()
     private val modelChild: BookingViewModel by viewModels()
+    private val modelChild : BookingViewModel by viewModels()
+    private val CHANNEL_ID = "channel_id_example_01"
+    private val notificationId = 102
+    private val ACTION_SNOZE = "ACTION_SNOOZE"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val extras = intent.extras
+
+//        if (extras != null) {
+//            getDetails(extras)
+//
+//        } else {
+//            finish()
+//        }
+
+        NotivicationView()
         setOnclick()
         withViewModel()
         viewmodelTeenager()
         viewModelChild()
+     //   goTowishlist()
+
+        binding.btnSearchFlight.setOnClickListener {
+            val intent = Intent(this@BookingActivity,TicketActivity::class.java)
+            startActivity(intent)
+            ViewNotification()
+        }
+    }
 
         initData()
+    private fun NotivicationView() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "TitleNotification"
+            val deskriptionText = "Deskripsi Notification"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL_ID,name,importance).apply {
+                description = deskriptionText
+            }
+            val notificationManager : NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+
     }
+
+    private fun ViewNotification() {
+        val snoozeIntent = Intent(this, MyBrodcastActivity::class.java).apply {
+            action = ACTION_SNOZE
+        }
+    }
+
+
+
+
+//    private fun goTowishlist() {
+//        binding.btnWislist.setOnClickListener {
+//            val intent = Intent(this@BookingActivity,WishlistActivity::class.java)
+//            startActivity(intent)
+//        }
+//    }
 
     private fun initData() {
         binding.tvFromCode.text = AIRPORT_CODE_FROM
