@@ -47,6 +47,7 @@ class PromoListActivity : AppCompatActivity() {
         val intent = Intent(this, OrderDetailActivity::class.java)
         APPLIED_PROMO = promo.discount!!
         PROMO_NAME = promo.name!!
+        PROMO_ID = promo.id!!
 
         startActivity(intent)
     }
@@ -75,5 +76,6 @@ class PromoListActivity : AppCompatActivity() {
     companion object {
         var APPLIED_PROMO = 0
         var PROMO_NAME = ""
+        var PROMO_ID = 0
     }
 }

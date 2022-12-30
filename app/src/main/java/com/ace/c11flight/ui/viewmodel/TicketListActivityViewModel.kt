@@ -7,9 +7,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ace.c11flight.data.model.CreateTransactionResponse
 import com.ace.c11flight.data.model.TicketResponse
+import com.ace.c11flight.data.model.Transaction
+import com.ace.c11flight.ui.view.ProfileActivity
 import com.ace.c11flight.ui.view.TicketListActivity.Companion.TICKET_ID
 import kotlinx.coroutines.launch
+import okhttp3.RequestBody
 
 class TicketListActivityViewModel : ViewModel() {
 
@@ -24,6 +28,10 @@ class TicketListActivityViewModel : ViewModel() {
     val _ticketDetailResult = MutableLiveData<TicketResponse>()
     val ticketDetailResult: LiveData<TicketResponse>
         get() =_ticketDetailResult
+
+    val _transactionResult = MutableLiveData<Transaction>()
+    val transactionResult: LiveData<Transaction>
+        get() = _transactionResult
 
     val loadingState = MutableLiveData<Boolean>()
     val errorState = MutableLiveData<Pair<Boolean, Exception?>>()
@@ -66,5 +74,28 @@ class TicketListActivityViewModel : ViewModel() {
                 }
             }
         }
+    }
+
+    fun createTransaction(data: RequestBody) {
+        loadingState.postValue(true)
+        errorState.postValue(Pair(false, null))
+        viewModelScope.launch {
+            try {
+                val getData = apiService.createTransaction(data)
+                viewModelScope.launch {
+                    _transactionResult.postValue(getData)
+                    loadingState.postValue(false)
+                    errorState.postValue(Pair(false,null))
+                }
+            } catch (e: Exception) {
+                viewModelScope.launch {
+                    loadingState.postValue(false)
+                    errorState.postValue(Pair(true,e))
+                }
+            }
+        }
+    }
+    companion object {
+        var TRANS_ID:Int? = 0
     }
 }

@@ -54,6 +54,16 @@ interface AccountApiService {
         @Path("id") id: Int,
     ): TicketResponse
 
+    @POST("transaction")
+    suspend fun createTransaction(
+        @Body transaction: RequestBody
+    ): Transaction
+
+    @GET("transaction/{id}")
+    suspend fun getTransactionById(
+        @Path("id") id: Int?,
+    ): CreateTransactionResponse
+
     companion object{
 
         @JvmStatic

@@ -26,8 +26,7 @@
             android:name=".ui.view.TicketListActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.WishlistActivity"
-            android:name=".MyBrodcastActivity"
+            android:name=".ui.view.MyBrodcastActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
