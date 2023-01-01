@@ -3,6 +3,7 @@ package com.ace.c11flight.data.services
 import android.service.autofill.UserData
 import com.ace.c11flight.data.model.*
 import com.ace.c11flight.data.services.ServiceBuilder.BASE_URL
+import com.ace.c11flight.ui.view.HomeActivity.Companion.TOKEN
 import com.ace.c11flight.ui.view.PromoListActivity
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -34,7 +35,8 @@ interface AccountApiService {
     @PUT("users/{id}")
     suspend fun updateUserById(
         @Path("id") id: Long,
-        @Body data: RequestBody
+        @Body data: RequestBody,
+        @Header("Authorization") authorization: String = TOKEN
     ): AccountResponse
 
     @GET("airport")
@@ -56,16 +58,19 @@ interface AccountApiService {
 
     @POST("transaction")
     suspend fun createTransaction(
-        @Body transaction: RequestBody
+        @Body transaction: RequestBody,
+        @Header("Authorization") authorization: String = TOKEN
     ): Transaction
 
     @GET("transaction")
     suspend fun getTransactionList(
+        @Header("Authorization") authorization: String = TOKEN
     ): TransactionListResponse
 
     @GET("transaction/{id}")
     suspend fun getTransactionById(
         @Path("id") id: Int?,
+        @Header("Authorization") authorization: String = TOKEN
     ): CreateTransactionResponse
 
     companion object{

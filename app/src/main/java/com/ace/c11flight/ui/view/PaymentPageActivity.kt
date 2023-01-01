@@ -1,5 +1,6 @@
 package com.ace.c11flight.ui.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -26,6 +27,15 @@ class PaymentPageActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         observeData()
+        setOnclickListeners()
+    }
+
+    private fun setOnclickListeners() {
+        binding.btnGoToHome.setOnClickListener{
+            intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun observeData() {

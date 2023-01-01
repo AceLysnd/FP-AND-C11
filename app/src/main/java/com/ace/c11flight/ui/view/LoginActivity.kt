@@ -47,7 +47,8 @@ class LoginActivity : AppCompatActivity() {
                 username = "",
                 email = binding.etUsername.text.toString(),
                 password = binding.etPassword.text.toString(),
-                data = null
+                data = null,
+                token = ""
             )
 
             apiService.loginUser(loginInfo) {
@@ -60,7 +61,8 @@ class LoginActivity : AppCompatActivity() {
                         username = it.data?.username!!,
                         email = it.data.email!!,
                         password = it.data.password!!,
-                        id = it.data.id!!
+                        id = it.data.id!!,
+                        token = it.token.toString()
                     )
                     goToHome()
                 } else {
@@ -91,9 +93,10 @@ class LoginActivity : AppCompatActivity() {
         username: String,
         email: String,
         password: String,
-        id: Long
+        id: Long,
+        token: String
     ) {
-        viewModel.setAccount(username, email, password, id)
+        viewModel.setAccount(username, email, password, id, token)
     }
 
     fun saveLoginStatus(

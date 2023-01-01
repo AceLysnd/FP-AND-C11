@@ -29,8 +29,8 @@ class LocalRepository @Inject constructor (
         return accountDataSource.getUser(username)
     }
 
-    suspend fun setAccount(username: String, email: String, password:String, id: Long) {
-        prefs.setAccount(username, email, password, id)
+    suspend fun setAccount(username: String, email: String, password:String, id: Long, token: String) {
+        prefs.setAccount(username, email, password, id, token)
     }
 
     suspend fun setLoginStatus(loginStatus: Boolean) {

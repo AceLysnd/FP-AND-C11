@@ -84,6 +84,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel.getAccountPrefs().observe(this) {
             ACCOUNT_ID = it.accountId
             USERNAME = it.username
+            TOKEN = it.token
         }
     }
 
@@ -130,5 +131,6 @@ class HomeActivity : AppCompatActivity() {
 
     companion object {
         var USERNAME = ""
+        var TOKEN = ""
     }
 }
