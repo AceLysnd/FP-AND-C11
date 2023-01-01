@@ -13,7 +13,9 @@ import com.ace.c11flight.databinding.ActivityTicketListBinding
 import com.ace.c11flight.ui.adapter.TicketAdapter
 import com.ace.c11flight.ui.view.BookingActivity.Companion.AIRPORT_CODE_FROM
 import com.ace.c11flight.ui.viewmodel.TicketListActivityViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TicketListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTicketListBinding
 

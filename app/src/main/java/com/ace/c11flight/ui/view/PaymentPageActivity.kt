@@ -15,7 +15,9 @@ import com.ace.c11flight.ui.view.HomeActivity.Companion.USERNAME
 import com.ace.c11flight.ui.view.OrderDetailActivity.Companion.TOTAL_PRICE
 import com.ace.c11flight.ui.viewmodel.BookingFragmentViewModel
 import com.ace.c11flight.ui.viewmodel.TicketListActivityViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PaymentPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentPageBinding
 

@@ -73,6 +73,12 @@ interface AccountApiService {
         @Header("Authorization") authorization: String = TOKEN
     ): CreateTransactionResponse
 
+    @GET("notification/user/{id}")
+    suspend fun getNotificationById(
+        @Path("id") id: Long?,
+        @Header("Authorization") authorization: String = TOKEN
+    ): NotificationResponse
+
     companion object{
 
         @JvmStatic

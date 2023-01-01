@@ -18,61 +18,18 @@ class BookingActivity : AppCompatActivity() {
     private val modelBooking: BookingViewModel by viewModels()
     private val modelTeenager: BookingViewModel by viewModels()
     private val modelChild: BookingViewModel by viewModels()
-    private val CHANNEL_ID = "channel_id_example_01"
-    private val notificationId = 102
-    private val ACTION_SNOZE = "ACTION_SNOOZE"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val extras = intent.extras
-
-//        if (extras != null) {
-//            getDetails(extras)
-//
-//        } else {
-//            finish()
-//        }
         initData()
-        NotivicationView()
         setOnclick()
         withViewModel()
         viewmodelTeenager()
         viewModelChild()
-     //   goTowishlist()
     }
 
-
-    private fun NotivicationView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "TitleNotification"
-            val deskriptionText = "Deskripsi Notification"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID,name,importance).apply {
-                description = deskriptionText
-            }
-            val notificationManager : NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
-
-    }
-
-    private fun ViewNotification() {
-        val snoozeIntent = Intent(this, MyBrodcastActivity::class.java).apply {
-            action = ACTION_SNOZE
-        }
-    }
-
-
-
-
-//    private fun goTowishlist() {
-//        binding.btnWislist.setOnClickListener {
-//            val intent = Intent(this@BookingActivity,WishlistActivity::class.java)
-//            startActivity(intent)
-//        }
-//    }
 
     private fun initData() {
         binding.tvFromCode.text = AIRPORT_CODE_FROM
@@ -209,5 +166,12 @@ class BookingActivity : AppCompatActivity() {
         var TYPE_CODE = "0"
         var CATEGORY_CODE = "Economi"
         var PASSENGER_COUNT = 0
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

@@ -69,4 +69,11 @@ class ProfileActivity : AppCompatActivity() {
     companion object {
         var ACCOUNT_ID: Long = 0
     }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

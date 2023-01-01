@@ -37,6 +37,10 @@ class LocalRepository @Inject constructor (
         prefs.setLoginStatus(loginStatus)
     }
 
+    suspend fun setInAppStatus(inAppStatus: Int) {
+        prefs.setInAppStatus(inAppStatus)
+    }
+
     suspend fun setProfilePicture(profilePicture: String) {
         prefs.setProfilePicture(profilePicture)
     }
@@ -47,6 +51,10 @@ class LocalRepository @Inject constructor (
 
     fun getLoginStatus(): LiveData<Boolean> {
         return prefs.getLoginStatus().asLiveData()
+    }
+
+    fun getInAppStatus(): LiveData<Int> {
+        return prefs.getInAppStatus().asLiveData()
     }
 
     fun getAccountId(): LiveData<Long> {

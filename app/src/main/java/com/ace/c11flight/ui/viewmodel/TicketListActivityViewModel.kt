@@ -10,15 +10,32 @@ import androidx.lifecycle.viewModelScope
 import com.ace.c11flight.data.model.CreateTransactionResponse
 import com.ace.c11flight.data.model.TicketResponse
 import com.ace.c11flight.data.model.Transaction
+import com.ace.c11flight.data.repository.LocalRepository
 import com.ace.c11flight.ui.view.ProfileActivity
 import com.ace.c11flight.ui.view.TicketListActivity.Companion.TICKET_ID
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okhttp3.RequestBody
+import javax.inject.Inject
 
-class TicketListActivityViewModel : ViewModel() {
+@HiltViewModel
+class TicketListActivityViewModel @Inject constructor(
+    private val repository: LocalRepository
+
+): ViewModel() {
 
     private val apiService : AccountApiService by lazy {
         AccountApiService.invoke()
+    }
+
+    fun getInAppStatus(): LiveData<Int> {
+        return repository.getInAppStatus()
+    }
+
+    fun setInAppStatus(inAppStatus: Int) {
+        viewModelScope.launch {
+            repository.setInAppStatus(inAppStatus)
+        }
     }
 
     val _ticketResult = MutableLiveData<TicketListResponse>()

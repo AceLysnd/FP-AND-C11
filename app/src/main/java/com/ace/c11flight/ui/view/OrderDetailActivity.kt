@@ -1,6 +1,12 @@
 package com.ace.c11flight.ui.view
 
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -17,24 +23,36 @@ import com.ace.c11flight.ui.view.TicketListActivity.Companion.TICKET_ID
 import com.ace.c11flight.ui.viewmodel.TicketListActivityViewModel
 import com.ace.c11flight.ui.viewmodel.TicketListActivityViewModel.Companion.TRANS_ID
 import com.google.gson.annotations.SerializedName
+import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 
+@AndroidEntryPoint
 class OrderDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOrderDetailBinding
 
     private val viewModel: TicketListActivityViewModel by viewModels()
+
+    lateinit var notificationManager: NotificationManager
+    lateinit var notificationChannel: NotificationChannel
+    lateinit var builder: Notification.Builder
+    private val channelId = "takeoff.notification"
+    private val description = "booking notification"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
         observeData()
         setOnclickListeners()
         initData()
     }
+
+
 
     private fun initData() {
         if (APPLIED_PROMO != 0){
@@ -58,6 +76,14 @@ class OrderDetailActivity : AppCompatActivity() {
         }
 
         binding.proccedToPayment.setOnClickListener{
+
+            createNotification()
+
+            viewModel.getInAppStatus().observe(this) {
+                var status = it
+                viewModel.setInAppStatus(status + 1)
+            }
+
             val jsonObject = JSONObject()
             jsonObject.put("promo_id", PROMO_ID)
             jsonObject.put("ticket_id",TICKET_ID)
@@ -89,6 +115,27 @@ class OrderDetailActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun createNotification() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannel = NotificationChannel(channelId, description, NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.GREEN
+            notificationChannel.enableVibration(true)
+            notificationManager.createNotificationChannel(notificationChannel)
+
+            builder = Notification.Builder(this, channelId)
+                .setSmallIcon(R.drawable.ic_splash)
+                .setContentTitle("TakeOff")
+                .setContentText("Booking success")
+        } else {
+            builder = Notification.Builder(this)
+                .setSmallIcon(R.drawable.ic_splash)
+                .setContentTitle("TakeOff")
+                .setContentText("Booking success")
+        }
+        notificationManager.notify(1234, builder.build())
     }
 
     private fun observeData() {

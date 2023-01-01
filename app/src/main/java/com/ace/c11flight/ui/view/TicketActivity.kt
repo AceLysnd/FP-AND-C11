@@ -15,7 +15,5 @@ class TicketActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTicketBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
     }
 }
