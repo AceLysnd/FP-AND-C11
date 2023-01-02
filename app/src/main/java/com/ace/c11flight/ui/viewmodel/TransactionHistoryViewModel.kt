@@ -1,12 +1,15 @@
 package com.ace.c11flight.ui.viewmodel
 
+import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ace.c11flight.data.model.TicketResponse
 import com.ace.c11flight.data.model.Transaction
 import com.ace.c11flight.data.model.TransactionListResponse
 import com.ace.c11flight.data.services.AccountApiService
+import com.ace.c11flight.ui.view.TicketListActivity
 import kotlinx.coroutines.launch
 
 class TransactionHistoryViewModel : ViewModel() {

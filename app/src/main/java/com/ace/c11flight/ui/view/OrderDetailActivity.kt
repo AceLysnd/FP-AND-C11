@@ -154,6 +154,7 @@ class OrderDetailActivity : AppCompatActivity() {
 
     fun observeData() {
         viewModel.getTicketData()
+        viewModel.getUserById()
 
         viewModel.loadingState.observe(this) { isLoading ->
             binding.pbPost.isVisible = isLoading
@@ -172,8 +173,8 @@ class OrderDetailActivity : AppCompatActivity() {
             binding.tvFromDesc.text = it.data?.flight?.from?.city
             binding.tvToCode.text = it.data?.flight?.to?.cityCode
             binding.tvToDesc.text = it.data?.flight?.to?.city
-            val pricePassenger = it.data?.price
-            var totalPricePassenger = pricePassenger?.times(PASSENGER_COUNT)
+            binding.departureDateDesc.text = it.data?.flight?.departureDate
+            var totalPricePassenger = it.data?.price
             val ticketType = Integer.parseInt(TYPE_CODE)
             if (ticketType == 2) {
                 binding.tvFlightType.isVisible = true
@@ -191,7 +192,7 @@ class OrderDetailActivity : AppCompatActivity() {
                 binding.promoSec.isVisible = false
             } else {
                 TOTAL_PRICE = totalPricePassenger!!
-                binding.tvJumlahSatu.text = "Rp. " + APPLIED_PROMO.toString()
+                binding.tvJumlahSatu.text = "Rp. " + totalPricePassenger
                 binding.tvJumlahTiga.text = "-Rp. " + APPLIED_PROMO.toString()
                 binding.tvTotal.text = "Rp. " + (totalPricePassenger?.minus(APPLIED_PROMO)).toString()
             }
@@ -206,6 +207,12 @@ class OrderDetailActivity : AppCompatActivity() {
                 ticketId = TICKET_ID
             )
 //            binding.tvJumlahDua.text =
+        }
+        viewModel.accountData.observe(this){
+
+            binding.tvFirstName.text = it.data?.firstName.toString()
+            binding.tvLastName.text = it.data?.lastName.toString()
+            binding.tvPhone.text = it.data?.phone.toString()
         }
     }
 

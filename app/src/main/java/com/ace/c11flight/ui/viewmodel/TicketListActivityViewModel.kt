@@ -1,7 +1,6 @@
 package com.ace.c11flight.ui.viewmodel
 
 import android.util.Log
-import com.ace.c11flight.data.model.TicketListResponse
 import com.ace.c11flight.data.services.AccountApiService
 
 import androidx.lifecycle.LiveData
@@ -9,11 +8,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ace.c11flight.data.local.wishlist.WishlistEntity
-import com.ace.c11flight.data.model.CreateTransactionResponse
-import com.ace.c11flight.data.model.TicketResponse
-import com.ace.c11flight.data.model.Transaction
+import com.ace.c11flight.data.model.*
 import com.ace.c11flight.data.repository.LocalRepository
 import com.ace.c11flight.ui.view.ProfileActivity
+import com.ace.c11flight.ui.view.ProfileActivity.Companion.ACCOUNT_ID
 import com.ace.c11flight.ui.view.TicketListActivity.Companion.TICKET_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -124,6 +122,30 @@ class TicketListActivityViewModel @Inject constructor(
                 viewModelScope.launch {
                     loadingState.postValue(false)
                     errorState.postValue(Pair(true,e))
+                }
+            }
+        }
+    }
+
+    val _accountData = MutableLiveData<AccountResponse>()
+    val accountData: LiveData<AccountResponse>
+        get() = _accountData
+
+    fun getUserById() {
+        loadingState.postValue(true)
+        errorState.postValue(Pair(false, null))
+        viewModelScope.launch {
+            try {
+                val data = apiService.getUserById(ACCOUNT_ID)
+                viewModelScope.launch {
+                    _accountData.postValue(data)
+                    loadingState.postValue(false)
+                    errorState.postValue(Pair(false, null))
+                }
+            } catch (e: Exception) {
+                viewModelScope.launch {
+                    loadingState.postValue(false)
+                    errorState.postValue(Pair(true, e))
                 }
             }
         }

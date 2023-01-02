@@ -25,5 +25,7 @@ data class Ticket(
     @SerializedName("type")
     val type: String?,
     @SerializedName("updatedAt")
-    val updatedAt: String?
+    val updatedAt: String?,
+    @SerializedName("user")
+    val user: User?
 )

@@ -36,9 +36,9 @@ class BookingActivity : AppCompatActivity() {
 
     private fun initData() {
         binding.tvFromCode.text = AIRPORT_CODE_FROM
-        binding.etFrom.hint = AIRPORT_CITY_FROM
+        binding.etFrom.text = AIRPORT_CITY_FROM
         binding.tvToCode.text = AIRPORT_CODE_TO
-        binding.etTo.hint = AIRPORT_CITY_TO
+        binding.etTo.text = AIRPORT_CITY_TO
     }
 
     private fun viewModelChild() {

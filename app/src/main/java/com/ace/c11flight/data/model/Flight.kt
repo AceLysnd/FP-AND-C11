@@ -10,6 +10,8 @@ data class Flight(
     val createdAt: String?,
     @SerializedName("departure_time")
     val departureTime: String?,
+    @SerializedName("departure_date")
+    val departureDate: String?,
     @SerializedName("from")
     val from: From?,
     @SerializedName("from_airport_id")
