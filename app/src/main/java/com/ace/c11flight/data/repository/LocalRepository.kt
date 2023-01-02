@@ -36,7 +36,7 @@ class LocalRepository @Inject constructor (
         return accountDataSource.updateAccount(account)
     }
 
-    suspend fun getAccount(username: String): AccountEntity {
+    suspend fun getAccount(username: String): AccountEntity {                                   
         return accountDataSource.getUser(username)
     }
 
