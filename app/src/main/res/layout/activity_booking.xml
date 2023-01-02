@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".ui.view.BookingActivity"
     android:background="@color/main">
 
@@ -75,16 +75,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/from"
                 tools:ignore="MissingConstraints" />
 
-            <EditText
+            <TextView
                 android:id="@+id/et_from"
+                style="@style/ColoredHeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:hint="surabaya"
                 android:inputType="text"
-                android:textColorHint="#2196F3"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="surabaya"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="@+id/tvFromCode"
                 app:layout_constraintTop_toBottomOf="@+id/tvToCode"
                 tools:ignore="MissingConstraints" />
 
@@ -102,104 +102,28 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_from"
                 tools:ignore="MissingConstraints" />
 
-            <EditText
+            <TextView
                 android:id="@+id/et_DepartureDate"
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="11/01/2022"
-                android:inputType="date"
+                android:text="11/01/2022"
                 android:textColorHint="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/Departure_Date"
                 app:layout_constraintTop_toBottomOf="@+id/Departure_Date"
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/Pasenger"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:text="Pasengers"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/et_DepartureDate"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_DepartureDate"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/tv_adult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Adult"
-                android:textColor="#2196F3"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/Pasenger"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/Pasenger"
-                app:layout_constraintTop_toBottomOf="@+id/Pasenger"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/number_adult"
-                android:layout_width="wrap_content"
+                android:id="@+id/et_Return"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="21+"
-                android:textColor="#2196F3"
-                app:layout_constraintStart_toStartOf="@+id/tv_adult"
-                app:layout_constraintTop_toBottomOf="@+id/tv_adult"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/tv_teenager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Teenager"
-                android:textColor="#2196F3"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/number_adult"
-                app:layout_constraintTop_toBottomOf="@+id/number_adult"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/tv_number_Teenager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="15 -20 Years"
-                android:textColor="#2196F3"
-                app:layout_constraintStart_toStartOf="@+id/tv_teenager"
-                app:layout_constraintTop_toBottomOf="@+id/tv_teenager"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/tv_childreen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:text="Children"
-                android:textColor="#2196F3"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_number_Teenager"
-                app:layout_constraintTop_toBottomOf="@+id/tv_number_Teenager" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="0 - 14 Years"
-                android:textColor="#2196F3"
-                app:layout_constraintStart_toStartOf="@+id/tv_childreen"
-                app:layout_constraintTop_toBottomOf="@+id/tv_childreen"
-                tools:ignore="MissingConstraints" />
+                android:text="11/01/2022"
+                android:textColorHint="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/Departure_Date"
+                app:layout_constraintTop_toBottomOf="@+id/tv_return_Date"
+                android:visibility="gone"
+                tools:visibility="visible"/>
 
             <TextView
                 android:id="@+id/tv_to"
@@ -225,13 +149,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_to"
                 tools:ignore="MissingConstraints" />
 
-            <EditText
+            <TextView
+                style="@style/ColoredHeadline"
                 android:id="@+id/etTo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:hint="surabaya"
+                android:text="Surabaya"
+                android:textSize="18dp"
                 android:textColorHint="#2196F3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvToCode"
@@ -241,157 +167,28 @@
                 android:id="@+id/tv_return_Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:text="Return Date"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/etTo"
-                app:layout_constraintHorizontal_bias="0.75"
-                app:layout_constraintStart_toStartOf="@+id/etTo"
-                app:layout_constraintTop_toBottomOf="@+id/etTo"
-                tools:ignore="MissingConstraints" />
-
-            <EditText
-                android:id="@+id/et_Return_Date"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:hint="13/11/2022"
-                android:inputType="date"
-                android:textColorHint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_return_Date"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/btn_minus_plus"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/rounded"
-                android:text="-"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toStartOf="@+id/tv_value_adult"
-                app:layout_constraintTop_toBottomOf="@+id/Pasenger"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/tv_value_adult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="0"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/btn_plus_adult"
-                app:layout_constraintTop_toTopOf="@+id/btn_minus_plus"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/btn_plus_adult"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/rounded"
-                android:text="+"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btn_minus_plus"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/btn_minus_tenager"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/rounded"
-                android:text=" - "
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="@+id/btn_minus_plus"
-                app:layout_constraintStart_toStartOf="@+id/btn_minus_plus"
-                app:layout_constraintTop_toBottomOf="@+id/btn_minus_plus"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/tv_value_teenager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="0"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/btn_plus_teenager"
-                app:layout_constraintStart_toEndOf="@+id/btn_minus_tenager"
-                app:layout_constraintTop_toTopOf="@+id/btn_minus_tenager"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/btn_plus_teenager"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/rounded"
-                android:text="+"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btn_minus_tenager"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/btn_minus_childreen"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/rounded"
-                android:text="-"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="@+id/btn_minus_tenager"
-                app:layout_constraintStart_toStartOf="@+id/btn_minus_tenager"
-                app:layout_constraintTop_toBottomOf="@+id/btn_minus_tenager"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/tv_value_childreen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="0"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/btn_plus_children"
-                app:layout_constraintHorizontal_bias="0.565"
-                app:layout_constraintStart_toEndOf="@+id/btn_minus_childreen"
-                app:layout_constraintTop_toTopOf="@+id/btn_minus_childreen"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/btn_plus_children"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/rounded"
-                android:text="+"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="@+id/btn_plus_teenager"
-                app:layout_constraintTop_toBottomOf="@+id/btn_plus_teenager"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintStart_toStartOf="@+id/et_DepartureDate"
+                app:layout_constraintTop_toBottomOf="@+id/et_DepartureDate"
+                android:visibility="gone"
+                tools:visibility="visible"/>
 
             <Button
                 android:id="@+id/btn_Economy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="42dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/grayd9"
                 android:text="Economy"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/grayd9"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/et_Return"
                 tools:ignore="MissingConstraints" />
 
             <Button
@@ -435,6 +232,28 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_Bussiness" />
+
+            <ImageView
+                android:id="@+id/ivCallendarDepart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_baseline_calendar_month_24"
+                app:layout_constraintBottom_toBottomOf="@+id/et_DepartureDate"
+                app:layout_constraintEnd_toEndOf="@+id/et_DepartureDate"
+                app:layout_constraintStart_toEndOf="@+id/Departure_Date"
+                app:layout_constraintTop_toTopOf="@+id/Departure_Date" />
+
+            <ImageView
+                android:id="@+id/ivCallendarReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_calendar_month_24"
+                app:layout_constraintBottom_toBottomOf="@+id/et_Return"
+                app:layout_constraintStart_toStartOf="@+id/ivCallendarDepart"
+                app:layout_constraintTop_toTopOf="@+id/tv_return_Date"
+                android:visibility="gone"
+                tools:visibility="visible"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
