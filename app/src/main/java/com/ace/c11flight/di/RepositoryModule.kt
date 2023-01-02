@@ -2,6 +2,7 @@ package com.ace.c11flight.di
 
 import android.content.Context
 import com.ace.c11flight.data.local.user.AccountDataSource
+import com.ace.c11flight.data.local.wishlist.WishlistDataSource
 import com.ace.c11flight.data.model.Account
 import com.ace.c11flight.data.model.AccountDataStoreManager
 import com.ace.c11flight.data.repository.AccountRepository
@@ -24,8 +25,12 @@ object RepositoryModule {
 
     @ViewModelScoped
     @Provides
-    fun provideDataSource(accountDataSource: AccountDataSource, prefs: AccountDataStoreManager) =
-        LocalRepository(accountDataSource, prefs)
+    fun provideDataSource(
+        accountDataSource: AccountDataSource,
+        prefs: AccountDataStoreManager,
+        wishlistDataSource: WishlistDataSource
+    ) =
+        LocalRepository(accountDataSource, prefs, wishlistDataSource)
 
 
     @ViewModelScoped

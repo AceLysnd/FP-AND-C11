@@ -44,8 +44,8 @@ class HomeActivity : AppCompatActivity() {
     private fun initInAppNotification() {
         viewModel.getInAppStatus().observe(this) {
             if (it == 1) {
-                var status = it + 1
                 makeDialog()
+                var status = it + 1
                 viewModel.setInAppStatus(status)
             }
         }

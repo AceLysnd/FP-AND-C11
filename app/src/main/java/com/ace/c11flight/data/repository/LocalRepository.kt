@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import com.ace.c11flight.data.local.user.AccountDataSource
 import com.ace.c11flight.data.local.user.AccountEntity
+import com.ace.c11flight.data.local.wishlist.WishlistDataSource
+import com.ace.c11flight.data.local.wishlist.WishlistEntity
 import com.ace.c11flight.data.model.Account
 import com.ace.c11flight.data.model.AccountDataStoreManager
 import com.ace.c11flight.data.model.Prefs
@@ -12,7 +14,16 @@ import javax.inject.Inject
 class LocalRepository @Inject constructor (
     private val accountDataSource: AccountDataSource,
     private val prefs: AccountDataStoreManager,
+    private val wishlistDataSource: WishlistDataSource
 ) {
+    suspend fun insertWishlist(wishlistEntity: WishlistEntity):Long {
+        return wishlistDataSource.insertWishlist(wishlistEntity)
+    }
+
+    suspend fun deleteWishlist(wishlistEntity: WishlistEntity): Int {
+        return wishlistDataSource.deleteWishlist(wishlistEntity)
+    }
+
     suspend fun getAccountById(id: Long): AccountEntity? {
         return accountDataSource.getAccountById(id)
     }

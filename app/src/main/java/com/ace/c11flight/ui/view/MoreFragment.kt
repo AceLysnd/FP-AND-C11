@@ -37,5 +37,11 @@ class MoreFragment : Fragment() {
                 it.startActivity(intent)
             }
         }
+        binding.btnWishlist.setOnClickListener{
+            activity?.let {
+                val intent = Intent(it, WishlistActivity::class.java)
+                it.startActivity(intent)
+            }
+        }
     }
 }

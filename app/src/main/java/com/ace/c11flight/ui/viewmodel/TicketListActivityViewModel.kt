@@ -1,5 +1,6 @@
 package com.ace.c11flight.ui.viewmodel
 
+import android.util.Log
 import com.ace.c11flight.data.model.TicketListResponse
 import com.ace.c11flight.data.services.AccountApiService
 
@@ -7,6 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ace.c11flight.data.local.wishlist.WishlistEntity
 import com.ace.c11flight.data.model.CreateTransactionResponse
 import com.ace.c11flight.data.model.TicketResponse
 import com.ace.c11flight.data.model.Transaction
@@ -35,6 +37,20 @@ class TicketListActivityViewModel @Inject constructor(
     fun setInAppStatus(inAppStatus: Int) {
         viewModelScope.launch {
             repository.setInAppStatus(inAppStatus)
+        }
+    }
+
+    fun insertWishlist(wishlistEntity: WishlistEntity) {
+        viewModelScope.launch {
+            repository.insertWishlist(wishlistEntity)
+            Log.i("Wishlisted", "MyClass.getView() — get item number ${wishlistEntity.wishlistId}")
+        }
+    }
+
+    fun deleteWishList(wishlistEntity: WishlistEntity) {
+        viewModelScope.launch {
+            repository.deleteWishlist(wishlistEntity)
+            Log.i("WishlistDeleted", "MyClass.getView() — get item number ${wishlistEntity.wishlistId}")
         }
     }
 

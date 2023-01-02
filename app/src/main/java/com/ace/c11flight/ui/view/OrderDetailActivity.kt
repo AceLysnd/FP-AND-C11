@@ -12,6 +12,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.ace.c11flight.R
+import com.ace.c11flight.data.local.wishlist.WishlistEntity
 import com.ace.c11flight.databinding.ActivityOrderDetailBinding
 import com.ace.c11flight.ui.view.BookingActivity.Companion.PASSENGER_COUNT
 import com.ace.c11flight.ui.view.BookingActivity.Companion.TYPE_CODE
@@ -20,6 +21,7 @@ import com.ace.c11flight.ui.view.PromoListActivity.Companion.APPLIED_PROMO
 import com.ace.c11flight.ui.view.PromoListActivity.Companion.PROMO_ID
 import com.ace.c11flight.ui.view.PromoListActivity.Companion.PROMO_NAME
 import com.ace.c11flight.ui.view.TicketListActivity.Companion.TICKET_ID
+import com.ace.c11flight.ui.view.WishlistActivity.Companion.FROM_WISHLIST
 import com.ace.c11flight.ui.viewmodel.TicketListActivityViewModel
 import com.ace.c11flight.ui.viewmodel.TicketListActivityViewModel.Companion.TRANS_ID
 import com.google.gson.annotations.SerializedName
@@ -39,6 +41,8 @@ class OrderDetailActivity : AppCompatActivity() {
     lateinit var builder: Notification.Builder
     private val channelId = "takeoff.notification"
     private val description = "booking notification"
+
+    private lateinit var wishlistEntity: WishlistEntity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,8 +69,18 @@ class OrderDetailActivity : AppCompatActivity() {
     }
 
     private fun setOnclickListeners() {
+        var wishlistCounter = 0
         binding.wishlist.setOnClickListener{
-            binding.wishlist.setImageResource(R.drawable.ic_wishlist_clicked)
+            if (wishlistCounter == 0) {
+                viewModel.insertWishlist(wishlistEntity)
+                binding.wishlist.setImageResource(R.drawable.ic_wishlist_clicked)
+                wishlistCounter ++
+            } else {
+                viewModel.deleteWishList(wishlistEntity)
+                binding.wishlist.setImageResource(R.drawable.ic_wishlist)
+                wishlistCounter = 0
+            }
+
         }
 
         binding.cvPromo.setOnClickListener{
@@ -80,7 +94,7 @@ class OrderDetailActivity : AppCompatActivity() {
             createNotification()
 
             viewModel.getInAppStatus().observe(this) {
-                var status = it
+                var status = 0
                 viewModel.setInAppStatus(status + 1)
             }
 
@@ -138,7 +152,7 @@ class OrderDetailActivity : AppCompatActivity() {
         notificationManager.notify(1234, builder.build())
     }
 
-    private fun observeData() {
+    fun observeData() {
         viewModel.getTicketData()
 
         viewModel.loadingState.observe(this) { isLoading ->
@@ -167,15 +181,34 @@ class OrderDetailActivity : AppCompatActivity() {
                 binding.returnDateDesc.isVisible = true
                 totalPricePassenger = totalPricePassenger?.times(2)
             }
-            TOTAL_PRICE = totalPricePassenger!!
-            binding.tvJumlahSatu.text = "Rp. " + totalPricePassenger.toString()
-            binding.tvJumlahTiga.text = "-Rp. " + APPLIED_PROMO.toString()
-            binding.tvTotal.text = "Rp. " + (totalPricePassenger?.minus(APPLIED_PROMO)).toString()
 
+            if (FROM_WISHLIST) {
+                binding.tvTotal.text = "Rp. " + TOTAL_PRICE
+                binding.tvJumlahSatu.isVisible = false
+                binding.tvJumlahTiga.isVisible = false
+                binding.detail1.isVisible = false
+                binding.detail3.isVisible = false
+                binding.promoSec.isVisible = false
+            } else {
+                TOTAL_PRICE = totalPricePassenger!!
+                binding.tvJumlahSatu.text = "Rp. " + APPLIED_PROMO.toString()
+                binding.tvJumlahTiga.text = "-Rp. " + APPLIED_PROMO.toString()
+                binding.tvTotal.text = "Rp. " + (totalPricePassenger?.minus(APPLIED_PROMO)).toString()
+            }
 
+            wishlistEntity = WishlistEntity(
+                fromCode = binding.tvFromCode.text as String,
+                fromCity = binding.tvFromDesc.text as String,
+                toCode = binding.tvToCode.text as String,
+                toCity = binding.tvToDesc.text as String,
+                price = (totalPricePassenger?.minus(APPLIED_PROMO)).toString(),
+                promoId = PROMO_ID,
+                ticketId = TICKET_ID
+            )
 //            binding.tvJumlahDua.text =
         }
     }
+
     companion object {
         var TOTAL_PRICE = 0
     }

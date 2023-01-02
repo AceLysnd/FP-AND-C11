@@ -88,13 +88,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/ivHistory" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/btnWishlist"
                     android:paddingHorizontal="24sp">
 
                     <ImageView
-                        android:id="@+id/ivMore"
+                        android:id="@+id/ivWishlist"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_settings"
+                        android:src="@drawable/ic_wishlist_menu"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -103,10 +104,10 @@
                         style="@style/BigColoredHeadline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Settings"
+                        android:text="Wishlist"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivMore" />
+                        app:layout_constraintTop_toBottomOf="@+id/ivWishlist" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </GridLayout>
